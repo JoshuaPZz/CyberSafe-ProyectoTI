@@ -1,0 +1,208 @@
+/* Base Styles */
+body {
+  font-family: "Roboto", sans-serif;
+  background-color: white;
+  color: #333;
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+/* Course Header */
+.course-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.course-category {
+  background-color: black;
+  color: white;
+  font-size: 12px;
+  padding: 4px 8px;
+  border-radius: 4px;
+}
+
+.course-author {
+  color: #6b7280;
+  margin-left: 8px;
+}
+
+/* Course Title */
+.course-title {
+  font-size: 28px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+/* Course Meta */
+.course-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  color: #6b7280;
+  font-size: 14px;
+  margin-bottom: 20px;
+}
+
+.course-meta i {
+  color: #f97316;
+  margin-right: 4px;
+}
+
+/* Course Content Layout */
+.course-content {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+@media (min-width: 768px) {
+  .course-content {
+    flex-direction: row;
+  }
+}
+
+.main-content {
+  flex: 2;
+}
+
+.sidebar {
+  flex: 1;
+}
+
+/* Tabs */
+.tab-buttons {
+  display: flex;
+  gap: 16px;
+  margin-bottom: 16px;
+  border-bottom: 1px solid #e5e7eb;
+  padding-bottom: 8px;
+}
+
+.tab-buttons button {
+  background: none;
+  border: none;
+  padding: 8px 0;
+  cursor: pointer;
+  color: #6b7280;
+  font-weight: 500;
+}
+
+.tab-buttons button.active {
+  color: #f97316;
+  font-weight: bold;
+  border-bottom: 2px solid #f97316;
+}
+
+.tab-content {
+  background-color: #f3f4f6;
+  padding: 16px;
+  border-radius: 8px;
+  margin-bottom: 20px;
+}
+
+/* Comments Section */
+.comments-section h2 {
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 8px;
+}
+
+.comment-note {
+  color: #6b7280;
+  margin-bottom: 16px;
+}
+
+.comment-form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.form-row {
+  display: flex;
+  gap: 16px;
+}
+
+.form-row input {
+  flex: 1;
+  padding: 8px;
+  border: 1px solid #d1d5db;
+  border-radius: 4px;
+}
+
+textarea {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #d1d5db;
+  border-radius: 4px;
+  height: 120px;
+}
+
+.form-checkbox {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.form-checkbox label {
+  color: #6b7280;
+  font-size: 14px;
+}
+
+.comment-form button {
+  background-color: #f97316;
+  color: white;
+  padding: 8px 16px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  align-self: flex-start;
+}
+
+/* Sidebar Card */
+.course-card {
+  background-color: white;
+  padding: 16px;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.course-card img {
+  width: 100%;
+  border-radius: 8px;
+  margin-bottom: 16px;
+}
+
+.price-section {
+  text-align: center;
+}
+
+.old-price {
+  color: #6b7280;
+  text-decoration: line-through;
+  margin-right: 8px;
+}
+
+.current-price {
+  font-size: 24px;
+  font-weight: bold;
+  color: #ef4444;
+}
+
+.enroll-button {
+  background-color: #f97316;
+  color: white;
+  padding: 8px 16px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-top: 8px;
+  width: 100%;
+}
