@@ -5,6 +5,6 @@ import { CourseViewComponent } from './courses/course-view/course-view.component
 
 export const routes: Routes = [
   { path: 'courses/list', component: CoursesListComponent },
-  { path: 'menu/inicio', component: MenuInicioComponent },
+  { path: 'inicio', component: MenuInicioComponent },
   { path: 'courses/view', component: CourseViewComponent },
 ];
