@@ -7,11 +7,7 @@
 <!-- Hero Section -->
 <section class="hero">
   <div class="hero-content">
-    <img
-      src="/Front-demoCyberSafe/src/app/menu/menu-inicio/logo.jpeg"
-      alt="CyberSafe Logo"
-      class="hero-logo"
-    />
+    <img src="./assets/logo.jpeg" alt="CyberSafe Logo" class="hero-logo" />
     <h1>Cyber<span>Safe</span></h1>
     <p>
       La ciberseguridad no es solo tecnología, es inteligencia colectiva. Únete
@@ -20,7 +16,9 @@
     </p>
     <a href="#" class="hero-button">Explora Los Diferentes Planes</a>
   </div>
-  <div class="hero-person"><img src="" alt="Experto en Seguridad" /></div>
+  <div class="hero-person">
+    <img src="./assets/imagen.png" alt="Experto en Seguridad" />
+  </div>
 </section>
 
 <!-- Categories Section -->
@@ -113,12 +111,17 @@
       <h2>Desde Principiantes Hasta Futuros Expertos</h2>
       <p>Explora los cursos preferidos</p>
     </div>
-    <a href="#" class="view-all">All Courses</a>
+    <a
+      href="#"
+      class="view-all"
+      (click)="navigateToCourses(); $event.preventDefault()"
+      >All Courses</a
+    >
   </div>
   <div class="courses-grid">
     <div class="course-card">
       <div class="course-image">
-        <img src="/api/placeholder/400/200" alt="Defensa Contra Phishing" />
+        <img src="./assets/safe.jpg" alt="Defensa Contra Phishing" />
         <div class="course-category">Photography</div>
       </div>
       <div class="course-content">
@@ -147,7 +150,7 @@
     </div>
     <div class="course-card">
       <div class="course-image">
-        <img src="/api/placeholder/400/200" alt="Pentesting Ético" />
+        <img src="./assets/safe.jpg" alt="Pentesting Ético" />
         <div class="course-category">Photography</div>
       </div>
       <div class="course-content">
@@ -176,7 +179,7 @@
     </div>
     <div class="course-card">
       <div class="course-image">
-        <img src="/api/placeholder/400/200" alt="Protege Tu Hogar Digital" />
+        <img src="./assets/safe.jpg" alt="Protege Tu Hogar Digital" />
         <div class="course-category">Photography</div>
       </div>
       <div class="course-content">
@@ -205,7 +208,7 @@
     </div>
     <div class="course-card">
       <div class="course-image">
-        <img src="/api/placeholder/400/200" alt="Seguridad en Redes Sociales" />
+        <img src="./assets/safe.jpg" alt="Seguridad en Redes Sociales" />
         <div class="course-category">Photography</div>
       </div>
       <div class="course-content">
@@ -234,7 +237,7 @@
     </div>
     <div class="course-card">
       <div class="course-image">
-        <img src="/api/placeholder/400/200" alt="Seguridad En La Nube" />
+        <img src="./assets/safe.jpg" alt="Seguridad En La Nube" />
         <div class="course-category">Photography</div>
       </div>
       <div class="course-content">
@@ -263,10 +266,7 @@
     </div>
     <div class="course-card">
       <div class="course-image">
-        <img
-          src="/api/placeholder/400/200"
-          alt="Ciberseguridad Para Empleados"
-        />
+        <img src="./assets/safe.jpg" alt="Ciberseguridad Para Empleados" />
         <div class="course-category">Photography</div>
       </div>
       <div class="course-content">
