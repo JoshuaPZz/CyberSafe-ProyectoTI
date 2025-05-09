@@ -66,50 +66,6 @@ ul {
     color: white;
 }
 
-/* Header Styles */
-
-.main-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.logo {
-    display: flex;
-    align-items: center;
-}
-
-.logo img {
-    margin-right: 10px;
-    height: 60px;
-}
-
-.nav-menu {
-    display: flex;
-}
-
-.nav-menu li {
-    margin: 0 15px;
-}
-
-.auth-buttons {
-    display: flex;
-    align-items: center;
-}
-
-.auth-buttons a {
-    margin-left: 15px;
-}
-
-.user-icon {
-    width: 30px;
-    height: 30px;
-    background-color: #f0f0f0;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
 
 .hero {
   background-color: #000;

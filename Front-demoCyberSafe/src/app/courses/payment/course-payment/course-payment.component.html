@@ -1,0 +1,86 @@
+<app-top-bar></app-top-bar>
+<body>
+
+    <div class="container">
+        <h1>Completar Compra</h1>
+        
+        <div class="checkout-grid">
+            <div class="payment-section">
+                <h2>Método de Pago</h2>
+                <p class="subtitle">Selecciona tu método de pago preferido</p>
+                
+                <div class="payment-option selected">
+                    <input type="radio" name="payment" id="card1" checked>
+                    <div class="card-icon">
+                        <span>💳</span>
+                    </div>
+                    <div class="card-details">
+                        <div class="card-type">Visa terminada en 4242</div>
+                        <div class="card-expiry">Expira 09/2025</div>
+                    </div>
+                    <div class="visa-label">VISA</div>
+                </div>
+                
+                <div class="alternative-method">
+                    <input type="radio" name="payment" id="different">
+                    <label for="different">Usar un método de pago diferente</label>
+                </div>
+                
+                <div class="security-note">
+                    <span class="security-icon">🔒</span>
+                    <span>Tu información de pago está segura y encriptada</span>
+                </div>
+                
+                <button class="pay-button" (click) = "paymentBtn()">Pagar Ahora</button>
+            </div>
+            
+            <div class="order-summary">
+                <h2>Resumen del Pedido</h2>
+                
+                <div class="course-info">
+                    <div class="course-image">
+                        <span>Phishing</span>
+                    </div>
+                    <div class="course-details">
+                        <h3>Defensa Contra Phishing: No Caigas En La Trampa</h3>
+                        <p class="course-author">por Ana López</p>
+                    </div>
+                </div>
+                
+                <div class="course-features">
+                    <div class="feature">
+                        <div class="feature-dot"></div>
+                        <div>1 Semana</div>
+                    </div>
+                    <div class="feature">
+                        <div class="feature-dot"></div>
+                        <div>20 Clases</div>
+                    </div>
+                    <div class="feature">
+                        <div class="feature-dot"></div>
+                        <div>3 Quizes</div>
+                    </div>
+                    <div class="feature">
+                        <div class="feature-dot"></div>
+                        <div>Acceso de por vida</div>
+                    </div>
+                </div>
+                
+                <div class="price-summary">
+                    <div class="price-row">
+                        <div>Subtotal</div>
+                        <div>$20.0</div>
+                    </div>
+                    <div class="price-row">
+                        <div>Descuento</div>
+                        <div class="discount">-$20.0</div>
+                    </div>
+                    <div class="price-row price-total">
+                        <div>Total</div>
+                        <div>$0.0</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>

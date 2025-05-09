@@ -1,278 +1,519 @@
-<app-menu-header></app-menu-header>
-<title>CyberSafe Courses</title>
-<link
-  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
-  rel="stylesheet"
-/>
-<link
-  href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap"
-  rel="stylesheet"
-/>
-
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>All Courses - CyberSafe</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
 <body>
-  <main class="main-container">
-    <div class="container">
-      <!-- Breadcrumb y búsqueda -->
-      <div class="breadcrumb-container">
-        <div>
-          <a class="breadcrumb-link" href="#">Homepage</a> /
-          <span class="breadcrumb-current">Course</span>
+  <app-top-bar></app-top-bar>
+    <!-- Breadcrumb -->
+    <div class="breadcrumb">
+        <div class="container breadcrumb-container">
+            <a href="#" class="breadcrumb-item">Homepage</a>
+            <span class="breadcrumb-item">Course</span>
         </div>
-        <div class="search-container">
-          <input class="search-input" placeholder="Search" type="text" />
-          <button class="view-toggle"><i class="fas fa-search"></i></button>
-          <button class="view-toggle"><i class="fas fa-th"></i></button>
-        </div>
-      </div>
-
-      <h1 class="page-title">All Courses</h1>
-
-      <!-- Contenido principal -->
-      <div class="content-wrapper">
-        <!-- Grid de cursos -->
-        <div class="courses-grid">
-          <!-- Tarjeta 1 -->
-          <div class="course-card">
-            <div class="course-image-container">
-              <img
-                class="course-image"
-                alt="Course Image 1"
-                src="https://storage.googleapis.com/a1aa/image/tPW3bARtAW-UDxYlQ5WZPlXtXhIYy7r7_ksm605Ko9c.jpg"
-              />
-              <span class="course-category">Photography</span>
-            </div>
-            <div class="course-content">
-              <p class="course-author">por Ana López</p>
-              <h2 class="course-title">
-                Defensa Contra Phishing: No Caigas En La Trampa
-              </h2>
-              <div class="course-meta">
-                <span>1 Semana</span>
-                <span class="meta-separator">•</span>
-                <span>156 Estudiantes</span>
-              </div>
-              <div class="course-footer">
-                <span class="course-price">Gratis</span>
-                <a class="course-link" href="#" (click)="navigateToView($event)"
-                  >Ver Más</a
-                >
-              </div>
-            </div>
-          </div>
-
-          <!-- Tarjeta 2 -->
-          <div class="course-card">
-            <div class="course-image-container">
-              <img
-                class="course-image"
-                alt="Course Image 2"
-                src="https://storage.googleapis.com/a1aa/image/tPW3bARtAW-UDxYlQ5WZPlXtXhIYy7r7_ksm605Ko9c.jpg"
-              />
-              <span class="course-category">Seguridad</span>
-            </div>
-            <div class="course-content">
-              <p class="course-author">por Carlos Mendez</p>
-              <h2 class="course-title">
-                Criptografía Moderna para Principiantes
-              </h2>
-              <div class="course-meta">
-                <span>2 Semanas</span>
-                <span class="meta-separator">•</span>
-                <span>89 Estudiantes</span>
-              </div>
-              <div class="course-footer">
-                <span class="course-price">$49.99</span>
-                <a class="course-link" href="#">Ver Mas</a>
-              </div>
-            </div>
-          </div>
-
-          <!-- Tarjeta 3 -->
-          <div class="course-card">
-            <div class="course-image-container">
-              <img
-                class="course-image"
-                alt="Course Image 3"
-                src="https://storage.googleapis.com/a1aa/image/tPW3bARtAW-UDxYlQ5WZPlXtXhIYy7r7_ksm605Ko9c.jpg"
-              />
-              <span class="course-category">Redes</span>
-            </div>
-            <div class="course-content">
-              <p class="course-author">por Laura Gutierrez</p>
-              <h2 class="course-title">Seguridad en Redes Domésticas</h2>
-              <div class="course-meta">
-                <span>3 Semanas</span>
-                <span class="meta-separator">•</span>
-                <span>203 Estudiantes</span>
-              </div>
-              <div class="course-footer">
-                <span class="course-price">$29.99</span>
-                <a class="course-link" href="#">Ver Mas</a>
-              </div>
-            </div>
-          </div>
-
-          <!-- Tarjeta 4 -->
-          <div class="course-card">
-            <div class="course-image-container">
-              <img
-                class="course-image"
-                alt="Course Image 4"
-                src="https://storage.googleapis.com/a1aa/image/tPW3bARtAW-UDxYlQ5WZPlXtXhIYy7r7_ksm605Ko9c.jpg"
-              />
-              <span class="course-category">Hacking</span>
-            </div>
-            <div class="course-content">
-              <p class="course-author">por Roberto Sanchez</p>
-              <h2 class="course-title">Introducción al Hacking Ético</h2>
-              <div class="course-meta">
-                <span>4 Semanas</span>
-                <span class="meta-separator">•</span>
-                <span>312 Estudiantes</span>
-              </div>
-              <div class="course-footer">
-                <span class="course-price">$79.99</span>
-                <a class="course-link" href="#">Ver Mas</a>
-              </div>
-            </div>
-          </div>
-
-          <!-- Tarjeta 5 -->
-          <div class="course-card">
-            <div class="course-image-container">
-              <img
-                class="course-image"
-                alt="Course Image 5"
-                src="https://storage.googleapis.com/a1aa/image/tPW3bARtAW-UDxYlQ5WZPlXtXhIYy7r7_ksm605Ko9c.jpg"
-              />
-              <span class="course-category">Forensia</span>
-            </div>
-            <div class="course-content">
-              <p class="course-author">por Patricia Ramirez</p>
-              <h2 class="course-title">Forensia Digital Básica</h2>
-              <div class="course-meta">
-                <span>2 Semanas</span>
-                <span class="meta-separator">•</span>
-                <span>127 Estudiantes</span>
-              </div>
-              <div class="course-footer">
-                <span class="course-price">$59.99</span>
-                <a class="course-link" href="#">Ver Mas</a>
-              </div>
-            </div>
-          </div>
-
-          <!-- Tarjeta 6 -->
-          <div class="course-card">
-            <div class="course-image-container">
-              <img
-                class="course-image"
-                alt="Course Image 6"
-                src="https://storage.googleapis.com/a1aa/image/tPW3bARtAW-UDxYlQ5WZPlXtXhIYy7r7_ksm605Ko9c.jpg"
-              />
-              <span class="course-category">GDPR</span>
-            </div>
-            <div class="course-content">
-              <p class="course-author">por Javier Fernandez</p>
-              <h2 class="course-title">Protección de Datos con GDPR</h2>
-              <div class="course-meta">
-                <span>3 Semanas</span>
-                <span class="meta-separator">•</span>
-                <span>178 Estudiantes</span>
-              </div>
-              <div class="course-footer">
-                <span class="course-price">$39.99</span>
-                <a class="course-link" href="#">Ver Mas</a>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Sidebar -->
-        <aside class="sidebar">
-          <div class="sidebar-widget">
-            <h2 class="widget-title">Course Category</h2>
-            <ul class="widget-list">
-              <li>
-                <a class="widget-link" href="#">Seguridad en Redes (15)</a>
-              </li>
-              <li><a class="widget-link" href="#">Hacking Ético (15)</a></li>
-              <li>
-                <a class="widget-link" href="#"
-                  >Protección de Datos y GDPR (15)</a
-                >
-              </li>
-              <li>
-                <a class="widget-link" href="#">Criptografía Aplicada (15)</a>
-              </li>
-              <li>
-                <a class="widget-link" href="#"
-                  >Concienciación para Usuarios (15)</a
-                >
-              </li>
-              <li><a class="widget-link" href="#">Forensia Digital (15)</a></li>
-              <li>
-                <a class="widget-link" href="#"
-                  >Cumplimiento Legal en Ciberseguridad (15)</a
-                >
-              </li>
-            </ul>
-          </div>
-
-          <div class="sidebar-widget">
-            <h2 class="widget-title">Instructors</h2>
-            <ul class="widget-list">
-              <li><a class="widget-link" href="#">Kenny White (15)</a></li>
-              <li><a class="widget-link" href="#">John Doe (15)</a></li>
-              <li><a class="widget-link" href="#">Ana López (12)</a></li>
-              <li><a class="widget-link" href="#">Carlos Mendez (10)</a></li>
-              <li><a class="widget-link" href="#">Laura Gutierrez (8)</a></li>
-            </ul>
-          </div>
-
-          <div class="sidebar-widget">
-            <h2 class="widget-title">Price</h2>
-            <ul class="widget-list">
-              <li><a class="widget-link" href="#">All (15)</a></li>
-              <li><a class="widget-link" href="#">Free (15)</a></li>
-              <li><a class="widget-link" href="#">Paid (15)</a></li>
-              <li><a class="widget-link" href="#">$0-$50 (15)</a></li>
-              <li><a class="widget-link" href="#">$50+ (15)</a></li>
-            </ul>
-          </div>
-
-          <div class="sidebar-widget">
-            <h2 class="widget-title">Review</h2>
-            <ul class="widget-list">
-              <li><a class="widget-link" href="#">★★★★★ (1,025)</a></li>
-              <li><a class="widget-link" href="#">★★★★☆ (1,025)</a></li>
-              <li><a class="widget-link" href="#">★★★☆☆ (1,025)</a></li>
-              <li><a class="widget-link" href="#">★★☆☆☆ (1,025)</a></li>
-              <li><a class="widget-link" href="#">★☆☆☆☆ (1,025)</a></li>
-            </ul>
-          </div>
-
-          <div class="sidebar-widget">
-            <h2 class="widget-title">Level</h2>
-            <ul class="widget-list">
-              <li><a class="widget-link" href="#">All levels (15)</a></li>
-              <li><a class="widget-link" href="#">Beginner (15)</a></li>
-              <li><a class="widget-link" href="#">Intermediate (15)</a></li>
-              <li><a class="widget-link" href="#">Expert (15)</a></li>
-            </ul>
-          </div>
-        </aside>
-      </div>
-
-      <!-- Paginación -->
-      <div class="pagination">
-        <button class="page-button">1</button>
-        <button class="page-button">2</button>
-        <button class="page-button">3</button>
-        <button class="page-button">
-          <i class="fas fa-chevron-right"></i>
-        </button>
-      </div>
     </div>
-  </main>
+    
+    <!-- Main Content -->
+    <main class="main-content">
+        <div class="container content-container">
+            <div class="courses-section">
+                <div class="section-header">
+                    <h1 class="section-title">All Courses</h1>
+                    <div style="display: flex; align-items: center;">
+                        <div class="search-bar">
+                            <input type="text" class="search-input" placeholder="Search">
+                            <button class="search-button">
+                                <i class="fas fa-search"></i>
+                            </button>
+                        </div>
+                        <div class="view-options">
+                            <div class="view-option active">
+                                <i class="fas fa-th-large"></i>
+                            </div>
+                            <div class="view-option">
+                                <i class="fas fa-list"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="course-grid">
+                    <!-- Course 1 -->
+                    <div class="course-card" (click)="navigateToACourse()">
+                        <div class="course-image">
+                            <img src="./assets/courses-img/phishing-list.png" alt="Phishing Course">
+                            <div class="course-category">Principiante</div>
+                        </div>
+                        <div class="course-content">
+                            <div class="course-instructor">por Ana López</div>
+                            <h3 class="course-title">Defensa Contra Phishing: No Caigas En La Trampa</h3>
+                            <div class="course-meta">
+                                <div class="course-duration">
+                                    <i class="far fa-clock"></i>
+                                    <span>1 Semana</span>
+                                </div>
+                                <div class="course-students">
+                                    <i class="far fa-user"></i>
+                                    <span>156 Estudiantes</span>
+                                </div>
+                            </div>
+                            <div class="course-footer">
+                                <div class="course-price">
+                                    <span class="original-price">$20.0</span>
+                                    <span class="free">Gratis</span>
+                                </div>
+                                <a href="#" class="view-more">Ver Mas</a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Course 2 -->
+                    <div class="course-card">
+                        <div class="course-image">
+                            <img src="./assets/courses-img/personal-list.png" alt="Social Media Security">
+                            <div class="course-category">Principiante</div>
+                        </div>
+                        <div class="course-content">
+                            <div class="course-instructor">by María Fernández</div>
+                            <h3 class="course-title">Protege Tus Datos Personales: De Redes Sociales A Apps</h3>
+                            <div class="course-meta">
+                                <div class="course-duration">
+                                    <i class="far fa-clock"></i>
+                                    <span>2 Semanas</span>
+                                </div>
+                                <div class="course-students">
+                                    <i class="far fa-user"></i>
+                                    <span>384 Estudiantes</span>
+                                </div>
+                            </div>
+                            <div class="course-footer">
+                                <div class="course-price">
+                                    <span class="original-price">$20.0</span>
+                                    <span class="free">Gratis</span>
+                                </div>
+                                <a href="#" class="view-more">Ver Mas</a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Course 3 -->
+                    <div class="course-card">
+                        <div class="course-image">
+                            <img src="./assets/courses-img/2fa-list.png" alt="2FA Security">
+                            <div class="course-category">Intermedio</div>
+                        </div>
+                        <div class="course-content">
+                            <div class="course-instructor">by CyberSafe Hub Team</div>
+                            <h3 class="course-title">Contraseñas Seguras Y 2FA: Tu Primera Línea De Defensa</h3>
+                            <div class="course-meta">
+                                <div class="course-duration">
+                                    <i class="far fa-clock"></i>
+                                    <span>3 Días</span>
+                                </div>
+                                <div class="course-students">
+                                    <i class="far fa-user"></i>
+                                    <span>16 Estudiantes</span>
+                                </div>
+                            </div>
+                            <div class="course-footer">
+                                <div class="course-price">
+                                    <span class="original-price">$20.0</span>
+                                    <span class="free">Gratis</span>
+                                </div>
+                                <a href="#" class="view-more">Ver Mas</a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Course 4 -->
+                    <div class="course-card">
+                        <div class="course-image">
+                            <img src="./assets/courses-img/mobile-list.png" alt="Mobile Security">
+                            <div class="course-category">Intermedio</div>
+                        </div>
+                        <div class="course-content">
+                            <div class="course-instructor">by Javier Martínez</div>
+                            <h3 class="course-title">Seguridad En Dispositivos Móviles: Evita Hackeos</h3>
+                            <div class="course-meta">
+                                <div class="course-duration">
+                                    <i class="far fa-clock"></i>
+                                    <span>1 Semana</span>
+                                </div>
+                                <div class="course-students">
+                                    <i class="far fa-user"></i>
+                                    <span>26 Estudiantes</span>
+                                </div>
+                            </div>
+                            <div class="course-footer">
+                                <div class="course-price">
+                                    <span class="original-price">$20.0</span>
+                                    <span class="free">Gratis</span>
+                                </div>
+                                <a href="#" class="view-more">Ver Mas</a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Course 5 -->
+                    <div class="course-card">
+                        <div class="course-image">
+                            <img src="./assets/courses-img/iot-list.png" alt="IoT Security">
+                            <div class="course-category">Avanzado</div>
+                        </div>
+                        <div class="course-content">
+                            <div class="course-instructor">by Sofía Mendoza</div>
+                            <h3 class="course-title">IoT Doméstico: Evita Que Hackeen Tu Hogar</h3>
+                            <div class="course-meta">
+                                <div class="course-duration">
+                                    <i class="far fa-clock"></i>
+                                    <span>3 Semanas</span>
+                                </div>
+                                <div class="course-students">
+                                    <i class="far fa-user"></i>
+                                    <span>156 Estudiantes</span>
+                                </div>
+                            </div>
+                            <div class="course-footer">
+                                <div class="course-price">
+                                    <span class="original-price">$20.0</span>
+                                    <span class="free">Gratis</span>
+                                </div>
+                                <a href="#" class="view-more">Ver Mas</a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Course 6 -->
+                    <div class="course-card">
+                        <div class="course-image">
+                            <img src="./assets/courses-img/social-list.png" alt="Social Media Security">
+                            <div class="course-category">Principiante</div>
+                        </div>
+                        <div class="course-content">
+                            <div class="course-instructor">by Laura Gómez</div>
+                            <h3 class="course-title">Redes Sociales: Navega Sin Riesgos</h3>
+                            <div class="course-meta">
+                                <div class="course-duration">
+                                    <i class="far fa-clock"></i>
+                                    <span>1 Semana</span>
+                                </div>
+                                <div class="course-students">
+                                    <i class="far fa-user"></i>
+                                    <span>320 Estudiantes</span>
+                                </div>
+                            </div>
+                            <div class="course-footer">
+                                <div class="course-price">
+                                    <span class="original-price">$20.0</span>
+                                    <span class="free">Gratis</span>
+                                </div>
+                                <a href="#" class="view-more">Ver Mas</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Pagination -->
+                <div class="pagination">
+                    <a href="#" class="page-item">
+                        <i class="fas fa-chevron-left"></i>
+                    </a>
+                    <a href="#" class="page-item active">1</a>
+                    <a href="#" class="page-item">2</a>
+                    <a href="#" class="page-item">3</a>
+                    <a href="#" class="page-item">
+                        <i class="fas fa-chevron-right"></i>
+                    </a>
+                </div>
+            </div>
+            
+            <!-- Sidebar -->
+            <div class="sidebar">
+                <!-- Course Category -->
+                <div class="sidebar-section">
+                    <h3 class="sidebar-title">Course Category</h3>
+                    <div class="filter-list">
+                        <div class="filter-item">
+                            <div>
+                                <input type="checkbox" id="cat1" class="filter-checkbox">
+                                <label for="cat1">Seguridad en Redes</label>
+                            </div>
+                            <span class="filter-count">15</span>
+                        </div>
+                        <div class="filter-item">
+                            <div>
+                                <input type="checkbox" id="cat2" class="filter-checkbox">
+                                <label for="cat2">Hacking Ético</label>
+                            </div>
+                            <span class="filter-count">15</span>
+                        </div>
+                        <div class="filter-item">
+                            <div>
+                                <input type="checkbox" id="cat3" class="filter-checkbox" checked>
+                                <label for="cat3">Protección de Datos y GDPR</label>
+                            </div>
+                            <span class="filter-count">15</span>
+                        </div>
+                        <div class="filter-item">
+                            <div>
+                                <input type="checkbox" id="cat4" class="filter-checkbox">
+                                <label for="cat4">Criptografía Aplicada</label>
+                            </div>
+                            <span class="filter-count">15</span>
+                        </div>
+                        <div class="filter-item">
+                            <div>
+                                <input type="checkbox" id="cat5" class="filter-checkbox" checked>
+                                <label for="cat5">Concienciación para Usuarios</label>
+                            </div>
+                            <span class="filter-count">15</span>
+                        </div>
+                        <div class="filter-item">
+                            <div>
+                                <input type="checkbox" id="cat6" class="filter-checkbox">
+                                <label for="cat6">Concienciación para Usuarios</label>
+                            </div>
+                            <span class="filter-count">15</span>
+                        </div>
+                        <div class="filter-item">
+                            <div>
+                                <input type="checkbox" id="cat7" class="filter-checkbox">
+                                <label for="cat7">Forense Digital</label>
+                            </div>
+                            <span class="filter-count">15</span>
+                        </div>
+                        <div class="filter-item">
+                            <div>
+                                <input type="checkbox" id="cat8" class="filter-checkbox">
+                                <label for="cat8">Cumplimiento Legal en Ciberseguridad</label>
+                            </div>
+                            <span class="filter-count">15</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Instructors -->
+                <div class="sidebar-section">
+                    <h3 class="sidebar-title">Instructors</h3>
+                    <div class="filter-list">
+                        <div class="filter-item">
+                            <div>
+                                <input type="checkbox" id="inst1" class="filter-checkbox">
+                                <label for="inst1">Kenny White</label>
+                            </div>
+                            <span class="filter-count">15</span>
+                        </div>
+                        <div class="filter-item">
+                            <div>
+                                <input type="checkbox" id="inst2" class="filter-checkbox">
+                                <label for="inst2">John Doe</label>
+                            </div>
+                            <span class="filter-count">15</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Price -->
+                <div class="sidebar-section">
+                    <h3 class="sidebar-title">Price</h3>
+                    <div class="filter-list">
+                        <div class="filter-item">
+                            <div>
+                                <input type="checkbox" id="price1" class="filter-checkbox" checked>
+                                <label for="price1">All</label>
+                            </div>
+                            <span class="filter-count">15</span>
+                        </div>
+                        <div class="filter-item">
+                            <div>
+                                <input type="checkbox" id="price2" class="filter-checkbox">
+                                <label for="price2">Free</label>
+                            </div>
+                            <span class="filter-count">15</span>
+                        </div>
+                        <div class="filter-item">
+                            <div>
+                                <input type="checkbox" id="price3" class="filter-checkbox">
+                                <label for="price3">Paid</label>
+                            </div>
+                            <span class="filter-count">15</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Review -->
+                <div class="sidebar-section">
+                    <h3 class="sidebar-title">Review</h3>
+                    <div class="filter-list">
+                        <div class="filter-item">
+                            <div>
+                                <input type="checkbox" id="review5" class="filter-checkbox">
+                                <label for="review5">
+                                    <div class="star-rating">
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                    </div>
+                                </label>
+                            </div>
+                            <span class="filter-count">(1,025)</span>
+                        </div>
+                        <div class="filter-item">
+                            <div>
+                                <input type="checkbox" id="review4" class="filter-checkbox" checked>
+                                <label for="review4">
+                                    <div class="star-rating">
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star empty"></i>
+                                    </div>
+                                </label>
+                            </div>
+                            <span class="filter-count">(1,025)</span>
+                        </div>
+                        <div class="filter-item">
+                            <div>
+                                <input type="checkbox" id="review3" class="filter-checkbox">
+                                <label for="review3">
+                                    <div class="star-rating">
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star empty"></i>
+                                        <i class="fas fa-star empty"></i>
+                                    </div>
+                                </label>
+                            </div>
+                            <span class="filter-count">(1,025)</span>
+                        </div>
+                        <div class="filter-item">
+                            <div>
+                                <input type="checkbox" id="review2" class="filter-checkbox">
+                                <label for="review2">
+                                    <div class="star-rating">
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star empty"></i>
+                                        <i class="fas fa-star empty"></i>
+                                        <i class="fas fa-star empty"></i>
+                                    </div>
+                                </label>
+                            </div>
+                            <span class="filter-count">(1,025)</span>
+                        </div>
+                        <div class="filter-item">
+                            <div>
+                                <input type="checkbox" id="review1" class="filter-checkbox">
+                                <label for="review1">
+                                    <div class="star-rating">
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star empty"></i>
+                                        <i class="fas fa-star empty"></i>
+                                        <i class="fas fa-star empty"></i>
+                                        <i class="fas fa-star empty"></i>
+                                    </div>
+                                </label>
+                            </div>
+                            <span class="filter-count">(1,025)</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Level -->
+                <div class="sidebar-section">
+                    <h3 class="sidebar-title">Level</h3>
+                    <div class="filter-list">
+                        <div class="filter-item">
+                            <div>
+                                <input type="checkbox" id="level1" class="filter-checkbox" checked>
+                                <label for="level1">All levels</label>
+                            </div>
+                            <span class="filter-count">15</span>
+                        </div>
+                        <div class="filter-item">
+                            <div>
+                                <input type="checkbox" id="level2" class="filter-checkbox">
+                                <label for="level2">Beginner</label>
+                            </div>
+                            <span class="filter-count">15</span>
+                        </div>
+                        <div class="filter-item">
+                            <div>
+                                <input type="checkbox" id="level3" class="filter-checkbox" checked>
+                                <label for="level3">Intermediate</label>
+                            </div>
+                            <span class="filter-count">15</span>
+                        </div>
+                        <div class="filter-item">
+                            <div>
+                                <input type="checkbox" id="level4" class="filter-checkbox">
+                                <label for="level4">Expert</label>
+                            </div>
+                            <span class="filter-count">15</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-container">
+                <div>
+                    <div class="footer-logo">
+                        <img src="./assets/logo_small.png" alt="CyberSafe Logo">
+                    </div>
+                    <p class="footer-about">¿Sabrías identificar un correo falso o bloquear un ataque de ransomware? No dejes tu seguridad al azar: conviértete en tu propio firewall humano.</p>
+                    <div class="social-links">
+                        <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-pinterest-p"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                
+                <div>
+                    <h3 class="footer-section-title">Ayuda</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">Contáctanos</a></li>
+                        <li><a href="#">Blogs</a></li>
+                        <li><a href="#">FAQ</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="footer-section-title">Contáctanos</h3>
+                    <div class="footer-contact-item">
+                        <strong>Address:</strong> Calle 182 #42-82
+                    </div>
+                    <div class="footer-contact-item">
+                        <strong>Tel:</strong> +57 3118458554
+                    </div>
+                    <div class="footer-contact-item">
+                        <strong>Mail:</strong> cybersafehub.dg&#64;gmail.com
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>Copyright © 2024 LearnPress LMS | Powered by ThimPress</p>
+            </div>
+        </div>
+    </footer>
+    
+    <!-- Back to Top -->
+    <div class="back-to-top">
+        <i class="fas fa-arrow-up"></i>
+    </div>
 </body>
+</html>
