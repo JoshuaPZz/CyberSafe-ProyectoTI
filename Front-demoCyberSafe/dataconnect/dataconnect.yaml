@@ -1,0 +1,12 @@
+specVersion: "v1"
+serviceId: "innovacion-ti-42951"
+location: "southamerica-east1"
+schema:
+  source: "./schema"
+  datasource:
+    postgresql:
+      database: "innovacion-ti-42951"
+      cloudSql:
+        instanceId: "innovacion-ti-42951"
+      # schemaValidation: "COMPATIBLE"
+connectorDirs: ["./connector"]
