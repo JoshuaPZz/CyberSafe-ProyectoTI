@@ -40,181 +40,43 @@
                     </div>
                 </div>
                 
-                <div class="course-grid">
-                    <!-- Course 1 -->
-                    <div class="course-card" (click)="navigateToACourse()">
-                        <div class="course-image">
-                            <img src="./assets/courses-img/phishing-list.png" alt="Phishing Course">
-                            <div class="course-category">Principiante</div>
+                <section class="courses">
+                    <div class="container">
+                        <div class="section-header">
+                        <div>
+                            <h2 class="section-title">Desde Principiantes Hasta Futuros Expertos</h2>
+                            <p class="section-subtitle">Explora los cursos perfectos</p>
                         </div>
-                        <div class="course-content">
-                            <div class="course-instructor">por Ana López</div>
-                            <h3 class="course-title">Defensa Contra Phishing: No Caigas En La Trampa</h3>
+                        <a href="#" class="btn btn-outline">All Courses</a>
+                        </div>
+
+                        <div class="course-grid">
+                        <div *ngFor="let course of courses" class="course-card">
+                            <div class="course-image">
+                            <img [src]="course.url_foto_curso" [alt]="course.nombre" />
+                            <!-- No hay "nivel" en los datos actuales -->
+                            </div>
+                            <div class="course-content">
+                            <h3 class="course-title">{{ course.nombre }}</h3>
                             <div class="course-meta">
-                                <div class="course-duration">
-                                    <i class="far fa-clock"></i>
-                                    <span>1 Semana</span>
+                                <div class="course-rating">
+                                <i class="fas fa-star"></i>
+                                <span>{{ course.calificacion }}</span>
                                 </div>
                                 <div class="course-students">
-                                    <i class="far fa-user"></i>
-                                    <span>156 Estudiantes</span>
+                                <i class="fas fa-user"></i>
+                                <span>{{ course.numero_de_estudiantes | number }} Estudiantes</span>
                                 </div>
                             </div>
-                            <div class="course-footer">
-                                <div class="course-price">
-                                    <span class="original-price">$20.0</span>
-                                    <span class="free">Gratis</span>
-                                </div>
-                                <a href="#" class="view-more">Ver Mas</a>
+                            <div class="course-price">
+                                <span class="price">{{ course.precio | currency:'USD' }}</span>
+                                <a href="#" class="btn btn-outline">Ver Más</a>
                             </div>
+                            </div>
+                        </div>
                         </div>
                     </div>
-                    
-                    <!-- Course 2 -->
-                    <div class="course-card">
-                        <div class="course-image">
-                            <img src="./assets/courses-img/personal-list.png" alt="Social Media Security">
-                            <div class="course-category">Principiante</div>
-                        </div>
-                        <div class="course-content">
-                            <div class="course-instructor">by María Fernández</div>
-                            <h3 class="course-title">Protege Tus Datos Personales: De Redes Sociales A Apps</h3>
-                            <div class="course-meta">
-                                <div class="course-duration">
-                                    <i class="far fa-clock"></i>
-                                    <span>2 Semanas</span>
-                                </div>
-                                <div class="course-students">
-                                    <i class="far fa-user"></i>
-                                    <span>384 Estudiantes</span>
-                                </div>
-                            </div>
-                            <div class="course-footer">
-                                <div class="course-price">
-                                    <span class="original-price">$20.0</span>
-                                    <span class="free">Gratis</span>
-                                </div>
-                                <a href="#" class="view-more">Ver Mas</a>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <!-- Course 3 -->
-                    <div class="course-card">
-                        <div class="course-image">
-                            <img src="./assets/courses-img/2fa-list.png" alt="2FA Security">
-                            <div class="course-category">Intermedio</div>
-                        </div>
-                        <div class="course-content">
-                            <div class="course-instructor">by CyberSafe Hub Team</div>
-                            <h3 class="course-title">Contraseñas Seguras Y 2FA: Tu Primera Línea De Defensa</h3>
-                            <div class="course-meta">
-                                <div class="course-duration">
-                                    <i class="far fa-clock"></i>
-                                    <span>3 Días</span>
-                                </div>
-                                <div class="course-students">
-                                    <i class="far fa-user"></i>
-                                    <span>16 Estudiantes</span>
-                                </div>
-                            </div>
-                            <div class="course-footer">
-                                <div class="course-price">
-                                    <span class="original-price">$20.0</span>
-                                    <span class="free">Gratis</span>
-                                </div>
-                                <a href="#" class="view-more">Ver Mas</a>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <!-- Course 4 -->
-                    <div class="course-card">
-                        <div class="course-image">
-                            <img src="./assets/courses-img/mobile-list.png" alt="Mobile Security">
-                            <div class="course-category">Intermedio</div>
-                        </div>
-                        <div class="course-content">
-                            <div class="course-instructor">by Javier Martínez</div>
-                            <h3 class="course-title">Seguridad En Dispositivos Móviles: Evita Hackeos</h3>
-                            <div class="course-meta">
-                                <div class="course-duration">
-                                    <i class="far fa-clock"></i>
-                                    <span>1 Semana</span>
-                                </div>
-                                <div class="course-students">
-                                    <i class="far fa-user"></i>
-                                    <span>26 Estudiantes</span>
-                                </div>
-                            </div>
-                            <div class="course-footer">
-                                <div class="course-price">
-                                    <span class="original-price">$20.0</span>
-                                    <span class="free">Gratis</span>
-                                </div>
-                                <a href="#" class="view-more">Ver Mas</a>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <!-- Course 5 -->
-                    <div class="course-card">
-                        <div class="course-image">
-                            <img src="./assets/courses-img/iot-list.png" alt="IoT Security">
-                            <div class="course-category">Avanzado</div>
-                        </div>
-                        <div class="course-content">
-                            <div class="course-instructor">by Sofía Mendoza</div>
-                            <h3 class="course-title">IoT Doméstico: Evita Que Hackeen Tu Hogar</h3>
-                            <div class="course-meta">
-                                <div class="course-duration">
-                                    <i class="far fa-clock"></i>
-                                    <span>3 Semanas</span>
-                                </div>
-                                <div class="course-students">
-                                    <i class="far fa-user"></i>
-                                    <span>156 Estudiantes</span>
-                                </div>
-                            </div>
-                            <div class="course-footer">
-                                <div class="course-price">
-                                    <span class="original-price">$20.0</span>
-                                    <span class="free">Gratis</span>
-                                </div>
-                                <a href="#" class="view-more">Ver Mas</a>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <!-- Course 6 -->
-                    <div class="course-card">
-                        <div class="course-image">
-                            <img src="./assets/courses-img/social-list.png" alt="Social Media Security">
-                            <div class="course-category">Principiante</div>
-                        </div>
-                        <div class="course-content">
-                            <div class="course-instructor">by Laura Gómez</div>
-                            <h3 class="course-title">Redes Sociales: Navega Sin Riesgos</h3>
-                            <div class="course-meta">
-                                <div class="course-duration">
-                                    <i class="far fa-clock"></i>
-                                    <span>1 Semana</span>
-                                </div>
-                                <div class="course-students">
-                                    <i class="far fa-user"></i>
-                                    <span>320 Estudiantes</span>
-                                </div>
-                            </div>
-                            <div class="course-footer">
-                                <div class="course-price">
-                                    <span class="original-price">$20.0</span>
-                                    <span class="free">Gratis</span>
-                                </div>
-                                <a href="#" class="view-more">Ver Mas</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                    </section>
                 
                 <!-- Pagination -->
                 <div class="pagination">
