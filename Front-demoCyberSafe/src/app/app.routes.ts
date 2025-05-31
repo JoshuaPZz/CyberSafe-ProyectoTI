@@ -14,7 +14,7 @@ import { LoginComponent } from './auth/login/login.component';
 import { RegisterComponent } from './auth/register/register.component';
 
 export const routes: Routes = [
-  { path: 'courses/list', component: CoursesListComponent },
+  { path: 'courses/list', component: CoursesListComponent },//no abren porque tienen firebase
   { path: 'inicio', component: MenuInicioComponent },
   { path: 'courses/view', component: CourseViewComponent },
   { path: 'course/specific', component: IndividualCourseComponent },

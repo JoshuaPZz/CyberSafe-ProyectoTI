@@ -2,7 +2,6 @@
 <head>
   <meta charset="utf-8" />
   <meta content="width=device-width, initial-scale=1.0" name="viewport" />
-  <title>Defensa Contra Phishing</title>
   <link
     href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
     rel="stylesheet"
@@ -14,78 +13,175 @@
 </head>
 <body>
   <div class="container">
-    <div class="course-header">
-      <span class="course-category">Photography</span>
-      <span class="course-author">by Ana López</span>
+    <!-- Loading Indicator -->
+    <div *ngIf="loading" class="loading-container">
+      <i class="fas fa-spinner fa-spin fa-3x"></i>
+      <p>Cargando curso...</p>
     </div>
 
-    <h1 class="course-title">
-      Defensa Contra Phishing: No Caigas En La Trampa
-    </h1>
-
-    <div class="course-meta">
-      <span><i class="fas fa-clock"></i> 1 Semana</span>
-      <span><i class="fas fa-users"></i> 156 Estudiantes</span>
-      <span><i class="fas fa-signal"></i> Todos los niveles</span>
-      <span><i class="fas fa-video"></i> 20 Clases</span>
-      <span><i class="fas fa-question-circle"></i> 3 Quizzes</span>
+    <!-- Error Message -->
+    <div *ngIf="error" class="error-container">
+      <p>{{ error }}</p>
     </div>
 
-    <div class="course-content">
-      <div class="main-content">
-        <div class="course-tabs">
-          <div class="tab-buttons">
-            <button class="active">Curriculum</button>
-            <button class="active">Overview</button>
-            <button>Instructor</button>
-            <button>FAQs</button>
-            <button>Reviews</button>
-          </div>
-
-          <div class="tab-content">
-            <p>
-              Aprende a identificar correos falsos, mensajes sospechosos y
-              enlaces maliciosos con ejercicios prácticos basados en casos
-              reales. Este curso te convertirá en un escudo humano contra el
-              phishing, incluso si no tienes conocimientos técnicos.
-            </p>
-          </div>
-        </div>
-
-        <div class="comments-section">
-          <h2>Deja Un Comentario</h2>
-          <p class="comment-note">
-            Tu email no será publicado, nos ayudaría mucho tu opinión
-          </p>
-
-          <form class="comment-form">
-            <div class="form-row">
-              <input type="text" placeholder="Name*" />
-              <input type="email" placeholder="Email*" />
-            </div>
-            <textarea placeholder="Comment"></textarea>
-            <div class="form-checkbox">
-              <input type="checkbox" id="save-info" />
-              <label for="save-info"
-                >Save my name, email in this browser for the next time I
-                comment</label
-              >
-            </div>
-            <button type="submit">Postear Comentario</button>
-          </form>
-        </div>
+    <!-- Course Content -->
+    <div *ngIf="curso && !loading && !error">
+      <div class="course-header">
+        <span class="course-category">{{
+          curso?.tipo_de_suscripcion || "Photography"
+        }}</span>
+        <span class="course-author"
+          >by {{ curso?.nombre_profesor || "Ana López" }}</span
+        >
       </div>
 
-      <div class="sidebar">
-        <div class="course-card">
-          <img
-            src="https://storage.googleapis.com/a1aa/image/fuCPzw2SEGk0Y3TWjD88JgwR9zTroucWKCdEz9JPGvQ.jpg"
-            alt="Illustration of a person using a laptop with security icons"
-          />
-          <div class="price-section">
-            <span class="old-price">$69.00</span>
-            <span class="current-price">$49.00</span>
-            <button class="enroll-button">Inicia Ahora</button>
+      <h1 class="course-title">{{ curso?.nombre }}</h1>
+
+      <div class="course-meta">
+        <span
+          ><i class="fas fa-clock"></i>
+          {{ curso?.duracion || "1 Semana" }}</span
+        >
+        <span
+          ><i class="fas fa-users"></i>
+          {{ curso?.numero_de_estudiantes | number }} Estudiantes</span
+        >
+        <span><i class="fas fa-signal"></i> Todos los niveles</span>
+        <span
+          ><i class="fas fa-video"></i> {{ curso?.numero_clases }} Clases</span
+        >
+        <span
+          ><i class="fas fa-question-circle"></i>
+          {{ curso?.numero_quizes }} Quizzes</span
+        >
+      </div>
+
+      <div class="course-content">
+        <div class="main-content">
+          <!-- Tabs -->
+          <div class="course-tabs">
+            <div class="tab-buttons">
+              <button
+                [class.active]="activeTab === 'curriculum'"
+                (click)="setActiveTab('curriculum')"
+              >
+                Curriculum
+              </button>
+              <button
+                [class.active]="activeTab === 'overview'"
+                (click)="setActiveTab('overview')"
+              >
+                Overview
+              </button>
+              <button
+                [class.active]="activeTab === 'instructor'"
+                (click)="setActiveTab('instructor')"
+              >
+                Instructor
+              </button>
+              <button
+                [class.active]="activeTab === 'faqs'"
+                (click)="setActiveTab('faqs')"
+              >
+                FAQs
+              </button>
+              <button
+                [class.active]="activeTab === 'reviews'"
+                (click)="setActiveTab('reviews')"
+              >
+                Reviews
+              </button>
+            </div>
+
+            <div class="tab-content">
+              <div *ngIf="activeTab === 'overview'">
+                <p>{{ curso?.descripcion || "Descripción no disponible." }}</p>
+              </div>
+              <div *ngIf="activeTab === 'curriculum'">
+                <p>Contenido del curriculum aquí (pendiente de implementar).</p>
+              </div>
+              <div *ngIf="activeTab === 'instructor'">
+                <p>
+                  Información del instructor aquí (pendiente de implementar).
+                </p>
+              </div>
+              <div *ngIf="activeTab === 'faqs'">
+                <p>Preguntas frecuentes aquí (pendiente de implementar).</p>
+              </div>
+              <div *ngIf="activeTab === 'reviews'">
+                <p>Reseñas del curso aquí (pendiente de implementar).</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Comments Section -->
+          <div class="comments-section">
+            <h2>Deja Un Comentario</h2>
+            <p class="comment-note">
+              Tu email no será publicado, nos ayudaría mucho tu opinión
+            </p>
+
+            <form
+              class="comment-form"
+              (ngSubmit)="onSubmitComment(commentForm.value)"
+              #commentForm="ngForm"
+            >
+              <div class="form-row">
+                <input
+                  type="text"
+                  placeholder="Name*"
+                  ngModel
+                  name="name"
+                  required
+                />
+                <input
+                  type="email"
+                  placeholder="Email*"
+                  ngModel
+                  name="email"
+                  required
+                />
+              </div>
+              <textarea
+                placeholder="Comment"
+                ngModel
+                name="comment"
+                required
+              ></textarea>
+              <div class="form-checkbox">
+                <input type="checkbox" id="save-info" ngModel name="saveInfo" />
+                <label for="save-info">
+                  Save my name, email in this browser for the next time I
+                  comment
+                </label>
+              </div>
+              <button type="submit" [disabled]="!commentForm.valid">
+                Postear Comentario
+              </button>
+            </form>
+          </div>
+        </div>
+
+        <!-- Sidebar -->
+        <div class="sidebar">
+          <div class="course-card">
+            <img
+              [src]="
+                curso?.url_foto_curso ||
+                'https://storage.googleapis.com/a1aa/image/fuCPzw2SEGk0Y3TWjD88JgwR9zTroucWKCdEz9JPGvQ.jpg'
+              "
+              [alt]="'Imagen del curso ' + (curso?.nombre || '')"
+            />
+            <div class="price-section">
+              <span class="current-price">
+                {{
+                  curso?.precio === 0
+                    ? "Gratis"
+                    : (curso?.precio | currency : "USD" : "symbol" : "1.0-0")
+                }}
+              </span>
+              <button class="enroll-button">Inicia Ahora</button>
+            </div>
           </div>
         </div>
       </div>

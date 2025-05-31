@@ -24,4 +24,18 @@ export class CursosService {
       })
     );
   }  
+
+  getCursoByNombre(nombre: string) {
+    const db = getDatabase();
+    const cursosRef = ref(db, 'cursos');
+    return from(get(child(cursosRef, nombre))).pipe(
+      map((snapshot) => {
+        if (snapshot.exists()) {
+          return snapshot.val() as Curso;
+        } else {
+          throw new Error('Curso no encontrado');
+        }
+      })
+    );
+  }
 }
