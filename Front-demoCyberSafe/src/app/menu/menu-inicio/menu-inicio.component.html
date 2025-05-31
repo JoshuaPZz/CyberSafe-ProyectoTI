@@ -122,167 +122,46 @@
             </div>
         </div>
     </section>
-    
-    <!-- Courses Section -->
+    <!-- course-list.component.html -->
     <section class="courses">
-        <div class="container">
-            <div class="section-header">
-                <div>
-                    <h2 class="section-title">Desde Principiantes Hasta Futuros Expertos</h2>
-                    <p class="section-subtitle">Explora los cursos perfectos</p>
-                </div>
-                <a href="#" class="btn btn-outline">All Courses</a>
+    <div class="container">
+        <div class="section-header">
+        <div>
+            <h2 class="section-title">Desde Principiantes Hasta Futuros Expertos</h2>
+            <p class="section-subtitle">Explora los cursos perfectos</p>
+        </div>
+        <a href="#" class="btn btn-outline">All Courses</a>
+        </div>
+
+        <div class="course-grid">
+        <div *ngFor="let course of courses" class="course-card">
+            <div class="course-image">
+            <img [src]="course.url_foto_curso" [alt]="course.nombre" />
+            <!-- No hay "nivel" en los datos actuales -->
             </div>
-            
-            <div class="course-grid">
-                <div class="course-card">
-                    <div class="course-image">
-                        <img src="./assets/courses-img/phising-course.png" alt="Phishing Defense Course">
-                        <span class="course-level">Principiante</span>
-                    </div>
-                    <div class="course-content">
-                        <h3 class="course-title">Defensa Contra Phishing: Identifica y Evita Estafas Online</h3>
-                        <div class="course-meta">
-                            <div class="course-rating">
-                                <i class="fas fa-star"></i>
-                                <span>4.8</span>
-                            </div>
-                            <div class="course-students">
-                                <i class="fas fa-user"></i>
-                                <span>1,245 Estudiantes</span>
-                            </div>
-                        </div>
-                        <div class="course-price">
-                            <span class="price">$19.99</span>
-                            <a href="#" class="btn btn-outline">Ver Más</a>
-                        </div>
-                    </div>
+            <div class="course-content">
+            <h3 class="course-title">{{ course.nombre }}</h3>
+            <div class="course-meta">
+                <div class="course-rating">
+                <i class="fas fa-star"></i>
+                <span>{{ course.calificacion }}</span>
                 </div>
-                
-                <div class="course-card">
-                    <div class="course-image">
-                        <img src="./assets/courses-img/pentesting-course.png" alt="Protection Course">
-                        <span class="course-level">Principiante</span>
-                    </div>
-                    <div class="course-content">
-                        <h3 class="course-title">Protección Extra Para Principiantes: Escudos Efectivos</h3>
-                        <div class="course-meta">
-                            <div class="course-rating">
-                                <i class="fas fa-star"></i>
-                                <span>4.7</span>
-                            </div>
-                            <div class="course-students">
-                                <i class="fas fa-user"></i>
-                                <span>980 Estudiantes</span>
-                            </div>
-                        </div>
-                        <div class="course-price">
-                            <span class="price">€19.99</span>
-                            <a href="#" class="btn btn-outline">Ver Más</a>
-                        </div>
-                    </div>
+                <div class="course-students">
+                <i class="fas fa-user"></i>
+                <span>{{ course.numero_de_estudiantes | number }} Estudiantes</span>
                 </div>
-                
-                <div class="course-card">
-                    <div class="course-image">
-                        <img src="./assets/courses-img/home-course.png" alt="Digital Home Security Course">
-                        <span class="course-level">Intermedio</span>
-                    </div>
-                    <div class="course-content">
-                        <h3 class="course-title">Protege Tu Hogar Digital: VPN + Redes Seguras</h3>
-                        <div class="course-meta">
-                            <div class="course-rating">
-                                <i class="fas fa-star"></i>
-                                <span>4.9</span>
-                            </div>
-                            <div class="course-students">
-                                <i class="fas fa-user"></i>
-                                <span>1,560 Estudiantes</span>
-                            </div>
-                        </div>
-                        <div class="course-price">
-                            <span class="price">$24.99</span>
-                            <a href="#" class="btn btn-outline">Ver Más</a>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="course-card">
-                    <div class="course-image">
-                        <img src="./assets/courses-img/social-course.png" alt="Social Media Security Course">
-                        <span class="course-level">Principiante</span>
-                    </div>
-                    <div class="course-content">
-                        <h3 class="course-title">Seguridad En Redes Sociales: Evita Exposiciones De Datos</h3>
-                        <div class="course-meta">
-                            <div class="course-rating">
-                                <i class="fas fa-star"></i>
-                                <span>4.6</span>
-                            </div>
-                            <div class="course-students">
-                                <i class="fas fa-user"></i>
-                                <span>2,100 Estudiantes</span>
-                            </div>
-                        </div>
-                        <div class="course-price">
-                            <span class="price">€17.99</span>
-                            <a href="#" class="btn btn-outline">Ver Más</a>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="course-card">
-                    <div class="course-image">
-                        <img src="./assets/courses-img/cloud-course.png" alt="Cloud Security Course">
-                        <span class="course-level">Avanzado</span>
-                    </div>
-                    <div class="course-content">
-                        <h3 class="course-title">Seguridad En La Nube: Protege Datos Empresariales En AWS Y Azure</h3>
-                        <div class="course-meta">
-                            <div class="course-rating">
-                                <i class="fas fa-star"></i>
-                                <span>4.8</span>
-                            </div>
-                            <div class="course-students">
-                                <i class="fas fa-user"></i>
-                                <span>850 Estudiantes</span>
-                            </div>
-                        </div>
-                        <div class="course-price">
-                            <span class="price">€29.99</span>
-                            <a href="#" class="btn btn-outline">Ver Más</a>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="course-card">
-                    <div class="course-image">
-                        <img src="./assets/courses-img/common-course.png" alt="Cybersecurity for Employees Course">
-                        <span class="course-level">Intermedio</span>
-                    </div>
-                    <div class="course-content">
-                        <h3 class="course-title">Ciberseguridad Para Empleados: Evita Errores Que Cuestan Millones</h3>
-                        <div class="course-meta">
-                            <div class="course-rating">
-                                <i class="fas fa-star"></i>
-                                <span>4.7</span>
-                            </div>
-                            <div class="course-students">
-                                <i class="fas fa-user"></i>
-                                <span>1,320 Estudiantes</span>
-                            </div>
-                        </div>
-                        <div class="course-price">
-                            <span class="price">$21.99</span>
-                            <a href="#" class="btn btn-outline">Ver Más</a>
-                        </div>
-                    </div>
-                </div>
+            </div>
+            <div class="course-price">
+                <span class="price">{{ course.precio | currency:'USD' }}</span>
+                <a href="#" class="btn btn-outline">Ver Más</a>
+            </div>
             </div>
         </div>
+        </div>
+    </div>
     </section>
-    
-    <!-- Stats Section -->
+        
+<!-- Stats Section -->
     <section class="stats">
         <div class="container">
             <div class="stats-grid">

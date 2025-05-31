@@ -1,519 +1,368 @@
 <!DOCTYPE html>
 <html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>All Courses - CyberSafe</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-</head>
-<body>
-  <app-top-bar></app-top-bar>
-    <!-- Breadcrumb -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+  </head>
+  <body>
+    <app-top-bar></app-top-bar>
     <div class="breadcrumb">
-        <div class="container breadcrumb-container">
-            <a href="#" class="breadcrumb-item">Homepage</a>
-            <span class="breadcrumb-item">Course</span>
-        </div>
+      <div class="container breadcrumb-container">
+        <a routerLink="/" class="breadcrumb-item">Homepage</a>
+        <span class="breadcrumb-item">Courses</span>
+      </div>
     </div>
-    
-    <!-- Main Content -->
+
     <main class="main-content">
-        <div class="container content-container">
-            <div class="courses-section">
-                <div class="section-header">
-                    <h1 class="section-title">All Courses</h1>
-                    <div style="display: flex; align-items: center;">
-                        <div class="search-bar">
-                            <input type="text" class="search-input" placeholder="Search">
-                            <button class="search-button">
-                                <i class="fas fa-search"></i>
-                            </button>
-                        </div>
-                        <div class="view-options">
-                            <div class="view-option active">
-                                <i class="fas fa-th-large"></i>
-                            </div>
-                            <div class="view-option">
-                                <i class="fas fa-list"></i>
-                            </div>
-                        </div>
-                    </div>
+      <div class="container content-container">
+        <div class="courses-section">
+          <div class="section-header">
+            <h1 class="section-title">All Courses</h1>
+            <div style="display: flex; align-items: center">
+              <div class="search-bar">
+                <input
+                  type="text"
+                  class="search-input"
+                  placeholder="Search"
+                  [(ngModel)]="searchTerm"
+                  (input)="onSearch()"
+                />
+                <button
+                  class="search-button"
+                  (click)="onSearch()"
+                  aria-label="Buscar cursos"
+                >
+                  <i class="fas fa-search"></i>
+                </button>
+              </div>
+              <div class="view-options">
+                <div
+                  class="view-option"
+                  [class.active]="viewMode === 'grid'"
+                  (click)="setViewMode('grid')"
+                >
+                  <i class="fas fa-th-large"></i>
                 </div>
-                
-                <div class="course-grid">
-                    <!-- Course 1 -->
-                    <div class="course-card" (click)="navigateToACourse()">
-                        <div class="course-image">
-                            <img src="./assets/courses-img/phishing-list.png" alt="Phishing Course">
-                            <div class="course-category">Principiante</div>
-                        </div>
-                        <div class="course-content">
-                            <div class="course-instructor">por Ana López</div>
-                            <h3 class="course-title">Defensa Contra Phishing: No Caigas En La Trampa</h3>
-                            <div class="course-meta">
-                                <div class="course-duration">
-                                    <i class="far fa-clock"></i>
-                                    <span>1 Semana</span>
-                                </div>
-                                <div class="course-students">
-                                    <i class="far fa-user"></i>
-                                    <span>156 Estudiantes</span>
-                                </div>
-                            </div>
-                            <div class="course-footer">
-                                <div class="course-price">
-                                    <span class="original-price">$20.0</span>
-                                    <span class="free">Gratis</span>
-                                </div>
-                                <a href="#" class="view-more">Ver Mas</a>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <!-- Course 2 -->
-                    <div class="course-card">
-                        <div class="course-image">
-                            <img src="./assets/courses-img/personal-list.png" alt="Social Media Security">
-                            <div class="course-category">Principiante</div>
-                        </div>
-                        <div class="course-content">
-                            <div class="course-instructor">by María Fernández</div>
-                            <h3 class="course-title">Protege Tus Datos Personales: De Redes Sociales A Apps</h3>
-                            <div class="course-meta">
-                                <div class="course-duration">
-                                    <i class="far fa-clock"></i>
-                                    <span>2 Semanas</span>
-                                </div>
-                                <div class="course-students">
-                                    <i class="far fa-user"></i>
-                                    <span>384 Estudiantes</span>
-                                </div>
-                            </div>
-                            <div class="course-footer">
-                                <div class="course-price">
-                                    <span class="original-price">$20.0</span>
-                                    <span class="free">Gratis</span>
-                                </div>
-                                <a href="#" class="view-more">Ver Mas</a>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <!-- Course 3 -->
-                    <div class="course-card">
-                        <div class="course-image">
-                            <img src="./assets/courses-img/2fa-list.png" alt="2FA Security">
-                            <div class="course-category">Intermedio</div>
-                        </div>
-                        <div class="course-content">
-                            <div class="course-instructor">by CyberSafe Hub Team</div>
-                            <h3 class="course-title">Contraseñas Seguras Y 2FA: Tu Primera Línea De Defensa</h3>
-                            <div class="course-meta">
-                                <div class="course-duration">
-                                    <i class="far fa-clock"></i>
-                                    <span>3 Días</span>
-                                </div>
-                                <div class="course-students">
-                                    <i class="far fa-user"></i>
-                                    <span>16 Estudiantes</span>
-                                </div>
-                            </div>
-                            <div class="course-footer">
-                                <div class="course-price">
-                                    <span class="original-price">$20.0</span>
-                                    <span class="free">Gratis</span>
-                                </div>
-                                <a href="#" class="view-more">Ver Mas</a>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <!-- Course 4 -->
-                    <div class="course-card">
-                        <div class="course-image">
-                            <img src="./assets/courses-img/mobile-list.png" alt="Mobile Security">
-                            <div class="course-category">Intermedio</div>
-                        </div>
-                        <div class="course-content">
-                            <div class="course-instructor">by Javier Martínez</div>
-                            <h3 class="course-title">Seguridad En Dispositivos Móviles: Evita Hackeos</h3>
-                            <div class="course-meta">
-                                <div class="course-duration">
-                                    <i class="far fa-clock"></i>
-                                    <span>1 Semana</span>
-                                </div>
-                                <div class="course-students">
-                                    <i class="far fa-user"></i>
-                                    <span>26 Estudiantes</span>
-                                </div>
-                            </div>
-                            <div class="course-footer">
-                                <div class="course-price">
-                                    <span class="original-price">$20.0</span>
-                                    <span class="free">Gratis</span>
-                                </div>
-                                <a href="#" class="view-more">Ver Mas</a>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <!-- Course 5 -->
-                    <div class="course-card">
-                        <div class="course-image">
-                            <img src="./assets/courses-img/iot-list.png" alt="IoT Security">
-                            <div class="course-category">Avanzado</div>
-                        </div>
-                        <div class="course-content">
-                            <div class="course-instructor">by Sofía Mendoza</div>
-                            <h3 class="course-title">IoT Doméstico: Evita Que Hackeen Tu Hogar</h3>
-                            <div class="course-meta">
-                                <div class="course-duration">
-                                    <i class="far fa-clock"></i>
-                                    <span>3 Semanas</span>
-                                </div>
-                                <div class="course-students">
-                                    <i class="far fa-user"></i>
-                                    <span>156 Estudiantes</span>
-                                </div>
-                            </div>
-                            <div class="course-footer">
-                                <div class="course-price">
-                                    <span class="original-price">$20.0</span>
-                                    <span class="free">Gratis</span>
-                                </div>
-                                <a href="#" class="view-more">Ver Mas</a>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <!-- Course 6 -->
-                    <div class="course-card">
-                        <div class="course-image">
-                            <img src="./assets/courses-img/social-list.png" alt="Social Media Security">
-                            <div class="course-category">Principiante</div>
-                        </div>
-                        <div class="course-content">
-                            <div class="course-instructor">by Laura Gómez</div>
-                            <h3 class="course-title">Redes Sociales: Navega Sin Riesgos</h3>
-                            <div class="course-meta">
-                                <div class="course-duration">
-                                    <i class="far fa-clock"></i>
-                                    <span>1 Semana</span>
-                                </div>
-                                <div class="course-students">
-                                    <i class="far fa-user"></i>
-                                    <span>320 Estudiantes</span>
-                                </div>
-                            </div>
-                            <div class="course-footer">
-                                <div class="course-price">
-                                    <span class="original-price">$20.0</span>
-                                    <span class="free">Gratis</span>
-                                </div>
-                                <a href="#" class="view-more">Ver Mas</a>
-                            </div>
-                        </div>
-                    </div>
+                <div
+                  class="view-option"
+                  [class.active]="viewMode === 'list'"
+                  (click)="setViewMode('list')"
+                >
+                  <i class="fas fa-list"></i>
                 </div>
-                
-                <!-- Pagination -->
-                <div class="pagination">
-                    <a href="#" class="page-item">
-                        <i class="fas fa-chevron-left"></i>
-                    </a>
-                    <a href="#" class="page-item active">1</a>
-                    <a href="#" class="page-item">2</a>
-                    <a href="#" class="page-item">3</a>
-                    <a href="#" class="page-item">
-                        <i class="fas fa-chevron-right"></i>
-                    </a>
-                </div>
+              </div>
             </div>
-            
-            <!-- Sidebar -->
-            <div class="sidebar">
-                <!-- Course Category -->
-                <div class="sidebar-section">
-                    <h3 class="sidebar-title">Course Category</h3>
-                    <div class="filter-list">
-                        <div class="filter-item">
-                            <div>
-                                <input type="checkbox" id="cat1" class="filter-checkbox">
-                                <label for="cat1">Seguridad en Redes</label>
-                            </div>
-                            <span class="filter-count">15</span>
-                        </div>
-                        <div class="filter-item">
-                            <div>
-                                <input type="checkbox" id="cat2" class="filter-checkbox">
-                                <label for="cat2">Hacking Ético</label>
-                            </div>
-                            <span class="filter-count">15</span>
-                        </div>
-                        <div class="filter-item">
-                            <div>
-                                <input type="checkbox" id="cat3" class="filter-checkbox" checked>
-                                <label for="cat3">Protección de Datos y GDPR</label>
-                            </div>
-                            <span class="filter-count">15</span>
-                        </div>
-                        <div class="filter-item">
-                            <div>
-                                <input type="checkbox" id="cat4" class="filter-checkbox">
-                                <label for="cat4">Criptografía Aplicada</label>
-                            </div>
-                            <span class="filter-count">15</span>
-                        </div>
-                        <div class="filter-item">
-                            <div>
-                                <input type="checkbox" id="cat5" class="filter-checkbox" checked>
-                                <label for="cat5">Concienciación para Usuarios</label>
-                            </div>
-                            <span class="filter-count">15</span>
-                        </div>
-                        <div class="filter-item">
-                            <div>
-                                <input type="checkbox" id="cat6" class="filter-checkbox">
-                                <label for="cat6">Concienciación para Usuarios</label>
-                            </div>
-                            <span class="filter-count">15</span>
-                        </div>
-                        <div class="filter-item">
-                            <div>
-                                <input type="checkbox" id="cat7" class="filter-checkbox">
-                                <label for="cat7">Forense Digital</label>
-                            </div>
-                            <span class="filter-count">15</span>
-                        </div>
-                        <div class="filter-item">
-                            <div>
-                                <input type="checkbox" id="cat8" class="filter-checkbox">
-                                <label for="cat8">Cumplimiento Legal en Ciberseguridad</label>
-                            </div>
-                            <span class="filter-count">15</span>
-                        </div>
-                    </div>
+          </div>
+
+          <div *ngIf="loading" class="loading-container">
+            <i class="fas fa-spinner fa-spin fa-3x"></i>
+            <p>Cargando cursos...</p>
+          </div>
+
+          <div
+            *ngIf="!loading && filteredCourses && filteredCourses.length === 0"
+            class="no-results"
+          >
+            <i class="fas fa-search fa-3x"></i>
+            <h3>No se encontraron cursos</h3>
+            <p>Intenta ajustar tus filtros de búsqueda o revisa más tarde.</p>
+          </div>
+
+          <div
+            [class.course-grid]="viewMode === 'grid'"
+            [class.course-list]="viewMode === 'list'"
+            *ngIf="!loading && paginatedCourses && paginatedCourses.length > 0"
+          >
+            <div
+              *ngFor="let course of paginatedCourses"
+              class="course-card"
+              (click)="navigateToACourse(course.nombre)"
+            >
+              <div class="course-image">
+                <img
+                  [src]="
+                    course.url_foto_curso ||
+                    './assets/courses-img/default-course.png'
+                  "
+                  [alt]="course.nombre"
+                  (error)="onImageError($event)"
+                />
+              </div>
+              <div class="course-content">
+                <div class="course-instructor">
+                  por {{ course.nombre_profesor || "CyberSafe Team" }}
                 </div>
-                
-                <!-- Instructors -->
-                <div class="sidebar-section">
-                    <h3 class="sidebar-title">Instructors</h3>
-                    <div class="filter-list">
-                        <div class="filter-item">
-                            <div>
-                                <input type="checkbox" id="inst1" class="filter-checkbox">
-                                <label for="inst1">Kenny White</label>
-                            </div>
-                            <span class="filter-count">15</span>
-                        </div>
-                        <div class="filter-item">
-                            <div>
-                                <input type="checkbox" id="inst2" class="filter-checkbox">
-                                <label for="inst2">John Doe</label>
-                            </div>
-                            <span class="filter-count">15</span>
-                        </div>
-                    </div>
+                <h3 class="course-title">{{ course.nombre }}</h3>
+                <div class="course-meta">
+                  <div class="course-duration">
+                    <i class="far fa-clock"></i>
+                    <span>{{ course.duracion || "A tu ritmo" }}</span>
+                  </div>
+                  <div class="course-students">
+                    <i class="far fa-user"></i>
+                    <span
+                      >{{
+                        course.numero_de_estudiantes | number
+                      }}
+                      Estudiantes</span
+                    >
+                  </div>
                 </div>
-                
-                <!-- Price -->
-                <div class="sidebar-section">
-                    <h3 class="sidebar-title">Price</h3>
-                    <div class="filter-list">
-                        <div class="filter-item">
-                            <div>
-                                <input type="checkbox" id="price1" class="filter-checkbox" checked>
-                                <label for="price1">All</label>
-                            </div>
-                            <span class="filter-count">15</span>
-                        </div>
-                        <div class="filter-item">
-                            <div>
-                                <input type="checkbox" id="price2" class="filter-checkbox">
-                                <label for="price2">Free</label>
-                            </div>
-                            <span class="filter-count">15</span>
-                        </div>
-                        <div class="filter-item">
-                            <div>
-                                <input type="checkbox" id="price3" class="filter-checkbox">
-                                <label for="price3">Paid</label>
-                            </div>
-                            <span class="filter-count">15</span>
-                        </div>
-                    </div>
+                <div
+                  class="course-rating"
+                  *ngIf="
+                    course.calificacion !== undefined &&
+                    course.calificacion !== null
+                  "
+                >
+                  <div class="stars">
+                    <i
+                      *ngFor="let star of getStarArray(course.calificacion)"
+                      class="fas fa-star"
+                      [class.empty]="!star"
+                    ></i>
+                  </div>
+                  <span class="rating-number">({{ course.calificacion }})</span>
                 </div>
-                
-                <!-- Review -->
-                <div class="sidebar-section">
-                    <h3 class="sidebar-title">Review</h3>
-                    <div class="filter-list">
-                        <div class="filter-item">
-                            <div>
-                                <input type="checkbox" id="review5" class="filter-checkbox">
-                                <label for="review5">
-                                    <div class="star-rating">
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                    </div>
-                                </label>
-                            </div>
-                            <span class="filter-count">(1,025)</span>
-                        </div>
-                        <div class="filter-item">
-                            <div>
-                                <input type="checkbox" id="review4" class="filter-checkbox" checked>
-                                <label for="review4">
-                                    <div class="star-rating">
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star empty"></i>
-                                    </div>
-                                </label>
-                            </div>
-                            <span class="filter-count">(1,025)</span>
-                        </div>
-                        <div class="filter-item">
-                            <div>
-                                <input type="checkbox" id="review3" class="filter-checkbox">
-                                <label for="review3">
-                                    <div class="star-rating">
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star empty"></i>
-                                        <i class="fas fa-star empty"></i>
-                                    </div>
-                                </label>
-                            </div>
-                            <span class="filter-count">(1,025)</span>
-                        </div>
-                        <div class="filter-item">
-                            <div>
-                                <input type="checkbox" id="review2" class="filter-checkbox">
-                                <label for="review2">
-                                    <div class="star-rating">
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star empty"></i>
-                                        <i class="fas fa-star empty"></i>
-                                        <i class="fas fa-star empty"></i>
-                                    </div>
-                                </label>
-                            </div>
-                            <span class="filter-count">(1,025)</span>
-                        </div>
-                        <div class="filter-item">
-                            <div>
-                                <input type="checkbox" id="review1" class="filter-checkbox">
-                                <label for="review1">
-                                    <div class="star-rating">
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star empty"></i>
-                                        <i class="fas fa-star empty"></i>
-                                        <i class="fas fa-star empty"></i>
-                                        <i class="fas fa-star empty"></i>
-                                    </div>
-                                </label>
-                            </div>
-                            <span class="filter-count">(1,025)</span>
-                        </div>
-                    </div>
+                <div class="course-footer">
+                  <div class="course-price">
+                    <span
+                      class="current-price"
+                      [class.free]="course.precio === 0"
+                    >
+                      {{
+                        course.precio === 0
+                          ? "Gratis"
+                          : (course.precio
+                            | currency : "USD" : "symbol" : "1.0-0")
+                      }}
+                    </span>
+                  </div>
+                  <a
+                    class="view-more"
+                    (click)="
+                      $event.stopPropagation(); navigateToACourse(course.nombre)
+                    "
+                  >
+                    Ver Más
+                  </a>
                 </div>
-                
-                <!-- Level -->
-                <div class="sidebar-section">
-                    <h3 class="sidebar-title">Level</h3>
-                    <div class="filter-list">
-                        <div class="filter-item">
-                            <div>
-                                <input type="checkbox" id="level1" class="filter-checkbox" checked>
-                                <label for="level1">All levels</label>
-                            </div>
-                            <span class="filter-count">15</span>
-                        </div>
-                        <div class="filter-item">
-                            <div>
-                                <input type="checkbox" id="level2" class="filter-checkbox">
-                                <label for="level2">Beginner</label>
-                            </div>
-                            <span class="filter-count">15</span>
-                        </div>
-                        <div class="filter-item">
-                            <div>
-                                <input type="checkbox" id="level3" class="filter-checkbox" checked>
-                                <label for="level3">Intermediate</label>
-                            </div>
-                            <span class="filter-count">15</span>
-                        </div>
-                        <div class="filter-item">
-                            <div>
-                                <input type="checkbox" id="level4" class="filter-checkbox">
-                                <label for="level4">Expert</label>
-                            </div>
-                            <span class="filter-count">15</span>
-                        </div>
-                    </div>
-                </div>
+              </div>
             </div>
+          </div>
+
+          <div
+            class="pagination"
+            *ngIf="
+              !loading &&
+              filteredCourses &&
+              filteredCourses.length > coursesPerPage
+            "
+          >
+            <a
+              href="javascript:void(0);"
+              class="page-item"
+              [class.disabled]="currentPage === 1"
+              (click)="goToPage(currentPage - 1)"
+            >
+              <i class="fas fa-chevron-left"></i>
+            </a>
+
+            <a
+              *ngFor="let page of getPageNumbers()"
+              href="javascript:void(0);"
+              class="page-item"
+              [class.active]="page === currentPage"
+              (click)="page !== -1 && goToPage(page)"
+            >
+              <ng-container *ngIf="page !== -1">{{ page }}</ng-container>
+              <ng-container *ngIf="page === -1">...</ng-container>
+            </a>
+
+            <a
+              href="javascript:void(0);"
+              class="page-item"
+              [class.disabled]="currentPage === totalPages"
+              (click)="goToPage(currentPage + 1)"
+            >
+              <i class="fas fa-chevron-right"></i>
+            </a>
+          </div>
         </div>
+
+        <div class="sidebar">
+          <div class="sidebar-section">
+            <h3 class="sidebar-title">Instructors</h3>
+            <div class="filter-list">
+              <div
+                *ngFor="let instructor of instructorsList"
+                class="filter-item"
+              >
+                <div>
+                  <input
+                    type="checkbox"
+                    [id]="'inst-' + instructor.id"
+                    class="filter-checkbox"
+                    [checked]="selectedInstructors.includes(instructor.name)"
+                    (change)="onInstructorChange(instructor.name, $event)"
+                  />
+                  <label [for]="'inst-' + instructor.id">{{
+                    instructor.name
+                  }}</label>
+                </div>
+                <span class="filter-count">{{ instructor.count }}</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="sidebar-section">
+            <h3 class="sidebar-title">Price</h3>
+            <div class="filter-list">
+              <div class="filter-item">
+                <div>
+                  <input
+                    type="radio"
+                    id="price-all"
+                    name="priceFilter"
+                    class="filter-checkbox"
+                    [checked]="priceFilter === 'all'"
+                    (change)="onPriceFilterChange('all')"
+                  />
+                  <label for="price-all">All</label>
+                </div>
+                <span class="filter-count">{{ allCoursesCount }}</span>
+              </div>
+              <div class="filter-item">
+                <div>
+                  <input
+                    type="radio"
+                    id="price-free"
+                    name="priceFilter"
+                    class="filter-checkbox"
+                    [checked]="priceFilter === 'free'"
+                    (change)="onPriceFilterChange('free')"
+                  />
+                  <label for="price-free">Free</label>
+                </div>
+                <span class="filter-count">{{ freeCoursesCount }}</span>
+              </div>
+              <div class="filter-item">
+                <div>
+                  <input
+                    type="radio"
+                    id="price-paid"
+                    name="priceFilter"
+                    class="filter-checkbox"
+                    [checked]="priceFilter === 'paid'"
+                    (change)="onPriceFilterChange('paid')"
+                  />
+                  <label for="price-paid">Paid</label>
+                </div>
+                <span class="filter-count">{{ paidCoursesCount }}</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="sidebar-section">
+            <h3 class="sidebar-title">Review</h3>
+            <div class="filter-list">
+              <div *ngFor="let rating of ratingFilters" class="filter-item">
+                <div>
+                  <input
+                    type="checkbox"
+                    [id]="'review-' + rating.stars"
+                    class="filter-checkbox"
+                    [checked]="selectedRatings.includes(rating.stars)"
+                    (change)="onRatingChange(rating.stars, $event)"
+                  />
+                  <label [for]="'review-' + rating.stars">
+                    <div class="star-rating">
+                      <i
+                        *ngFor="let star of [1, 2, 3, 4, 5]"
+                        class="fas fa-star"
+                        [class.empty]="star > rating.stars"
+                      ></i>
+                    </div>
+                  </label>
+                </div>
+                <span class="filter-count">({{ rating.count }})</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="clear-filters">
+            <button class="btn btn-outline" (click)="clearAllFilters()">
+              <i class="fas fa-times"></i>
+              Limpiar Filtros
+            </button>
+          </div>
+        </div>
+      </div>
     </main>
-    
-    <!-- Footer -->
+
     <footer class="footer">
-        <div class="container">
-            <div class="footer-container">
-                <div>
-                    <div class="footer-logo">
-                        <img src="./assets/logo_small.png" alt="CyberSafe Logo">
-                    </div>
-                    <p class="footer-about">¿Sabrías identificar un correo falso o bloquear un ataque de ransomware? No dejes tu seguridad al azar: conviértete en tu propio firewall humano.</p>
-                    <div class="social-links">
-                        <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#" class="social-link"><i class="fab fa-pinterest-p"></i></a>
-                        <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
-                        <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
-                        <a href="#" class="social-link"><i class="fab fa-youtube"></i></a>
-                    </div>
-                </div>
-                
-                <div>
-                    <h3 class="footer-section-title">Ayuda</h3>
-                    <ul class="footer-links">
-                        <li><a href="#">Contáctanos</a></li>
-                        <li><a href="#">Blogs</a></li>
-                        <li><a href="#">FAQ</a></li>
-                    </ul>
-                </div>
-                
-                <div>
-                    <h3 class="footer-section-title">Contáctanos</h3>
-                    <div class="footer-contact-item">
-                        <strong>Address:</strong> Calle 182 #42-82
-                    </div>
-                    <div class="footer-contact-item">
-                        <strong>Tel:</strong> +57 3118458554
-                    </div>
-                    <div class="footer-contact-item">
-                        <strong>Mail:</strong> cybersafehub.dg&#64;gmail.com
-                    </div>
-                </div>
+      <div class="container">
+        <div class="footer-container">
+          <div>
+            <div class="footer-logo">
+              <img src="./assets/logo_small.png" alt="CyberSafe Logo" />
             </div>
-            
-            <div class="footer-bottom">
-                <p>Copyright © 2024 LearnPress LMS | Powered by ThimPress</p>
+            <p class="footer-about">
+              ¿Sabrías identificar un correo falso o bloquear un ataque de
+              ransomware? No dejes tu seguridad al azar: conviértete en tu
+              propio firewall humano.
+            </p>
+            <div class="social-links">
+              <a href="#" class="social-link"
+                ><i class="fab fa-facebook-f"></i
+              ></a>
+              <a href="#" class="social-link"
+                ><i class="fab fa-pinterest-p"></i
+              ></a>
+              <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+              <a href="#" class="social-link"
+                ><i class="fab fa-instagram"></i
+              ></a>
+              <a href="#" class="social-link"><i class="fab fa-youtube"></i></a>
             </div>
+          </div>
+
+          <div>
+            <h3 class="footer-section-title">Ayuda</h3>
+            <ul class="footer-links">
+              <li><a routerLink="/contact">Contáctanos</a></li>
+              <li><a routerLink="/blog">Blogs</a></li>
+              <li><a routerLink="/faq">FAQ</a></li>
+            </ul>
+          </div>
+
+          <div>
+            <h3 class="footer-section-title">Contáctanos</h3>
+            <div class="footer-contact-item">
+              <strong>Address:</strong> Calle 182 #42-82
+            </div>
+            <div class="footer-contact-item">
+              <strong>Tel:</strong> +57 3118458554
+            </div>
+            <div class="footer-contact-item">
+              <strong>Mail:</strong> cybersafehub.dg&commat;gmail.com
+            </div>
+          </div>
         </div>
+
+        <div class="footer-bottom">
+          <p>Copyright © 2024 LearnPress LMS | Powered by ThimPress</p>
+        </div>
+      </div>
     </footer>
-    
-    <!-- Back to Top -->
-    <div class="back-to-top">
-        <i class="fas fa-arrow-up"></i>
+
+    <div class="back-to-top" (click)="scrollToTop()">
+      <i class="fas fa-arrow-up"></i>
     </div>
-</body>
+  </body>
 </html>
