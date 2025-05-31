@@ -10,6 +10,8 @@ import { IndividualFaqsComponent } from './courses/individual-course/individual-
 import { IndividualReviewsComponent } from './courses/individual-course/individual-reviews/individual-reviews.component';
 import { CoursePaymentComponent } from './courses/payment/course-payment/course-payment.component';
 import { CoursePlaythroughComponent } from './courses/individual-course/course-playthrough/course-playthrough.component';
+import { LoginComponent } from './auth/login/login.component';
+import { RegisterComponent } from './auth/register/register.component';
 
 export const routes: Routes = [
   { path: 'courses/list', component: CoursesListComponent },
@@ -22,7 +24,9 @@ export const routes: Routes = [
   { path: 'course/reviews', component: IndividualReviewsComponent },
   { path: 'course/payment', component: CoursePaymentComponent },
   { path: 'course/playthrough', component: CoursePlaythroughComponent },
-
+  { path: 'login', component: LoginComponent },
+  { path: 'register', component: RegisterComponent },
+  { path: '', redirectTo: '/inicio', pathMatch: 'full' }
 ];
 
 @NgModule({

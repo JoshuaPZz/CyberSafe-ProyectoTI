@@ -12,7 +12,7 @@ import { provideFirestore, getFirestore } from '@angular/fire/firestore';
 import { provideDatabase, getDatabase } from '@angular/fire/database';
 import { provideStorage, getStorage } from '@angular/fire/storage';
 
-import { environment } from './enviroment';
+import { environment } from './environment';
 import { routes } from './app.routes';
 
 export const appConfig: ApplicationConfig = {

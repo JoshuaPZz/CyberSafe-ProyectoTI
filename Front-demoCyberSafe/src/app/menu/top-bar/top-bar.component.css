@@ -1,65 +1,84 @@
-
 .main-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.logo {
-    display: flex;
-    align-items: center;
-}
-
-.logo img {
-    margin-right: 10px;
-    height: 60px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 0;
 }
 
 .nav-menu {
-    display: flex;
+  display: flex;
+  list-style: none;
+  gap: 20px;
 }
 
-.nav-menu li {
-    margin: 0 15px;
-}
-.nav-menu li button{
-    background-color: white;
-    border: 0;
-    font-size: 16px;
-    cursor: pointer;
+.nav-menu button {
+  background: none;
+  border: none;
+  font-size: 1rem;
+  cursor: pointer;
+  color: #333;
+  transition: color 0.3s ease;
 }
 
-.nav-menu li button:hover{
+.nav-menu button:hover {
   color: #FF6B00;
 }
+
 .auth-buttons {
-    display: flex;
-    align-items: center;
+  display: flex;
+  align-items: center;
+  gap: 15px;
 }
+
 .auth-buttons a {
-    margin-left: 15px;
+  color: #FF6B00;
+  font-weight: 600;
+  text-decoration: none;
+  transition: color 0.3s ease;
 }
 
-a {
-    text-decoration: none;
-    color: inherit;
+.auth-buttons a:hover {
+  color: #E05F00;
 }
 
-ul {
-    list-style: none;
-}
 .user-icon {
-    width: 30px;
-    height: 30px;
-    background-color: #f0f0f0;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  cursor: pointer;
+  font-size: 1.2rem;
+  color: #FF6B00;
 }
 
-.container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 15px;
+.user-icon:hover {
+  color: #E05F00;
+}
+
+.user-name {
+  cursor: pointer;
+  color: #FF6B00;
+  font-weight: 600;
+  font-size: 1rem;
+  transition: color 0.3s ease;
+}
+
+.user-name:hover {
+  color: #E05F00;
+}
+
+.btn-outline {
+  border: 2px solid #FF6B00;
+  color: #FF6B00;
+  background: transparent;
+  padding: 8px 16px;
+  border-radius: 30px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.btn-outline:hover {
+  background-color: #FF6B00;
+  color: white;
+}
+
+.logo img {
+  height: 40px;
 }

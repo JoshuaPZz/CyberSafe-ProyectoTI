@@ -1,23 +1,71 @@
-import { Component } from '@angular/core';
-import { Router } from '@angular/router';
+import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Router, RouterLink } from '@angular/router';
+import { AuthService } from '../../auth/services/auth.service';
+import { Subscription } from 'rxjs';
+import { CommonModule } from '@angular/common'; // Importa CommonModule
 
 @Component({
   selector: 'app-top-bar',
-  imports: [],
+  standalone: true,
+  imports: [RouterLink, CommonModule], // Agrega CommonModule a los imports
   templateUrl: './top-bar.component.html',
-  styleUrl: './top-bar.component.css'
+  styleUrls: ['./top-bar.component.css']
 })
-export class TopBarComponent {
-  constructor(private router: Router) {}
+export class TopBarComponent implements OnInit, OnDestroy {
+  isLogin: boolean = true;
+  private userSubscription: Subscription | undefined;
+
+  constructor(private router: Router, public authService: AuthService) {}
+
+  ngOnInit() {
+    this.userSubscription = this.authService.user$.subscribe((user) => {
+      console.log('User updated in TopBar:', user);
+    });
+  }
+
+  get userDisplayName(): string {
+    const user = this.authService.getCurrentUser();
+    return user?.displayName || user?.email || 'Usuario';
+  }
+
   navigateToCourses() {
-    console.log('Navigating to courses/list');
     this.router.navigate(['/courses/list']);
   }
+
   navigateToACourse() {
-    console.log('Navigating to courses/list');
     this.router.navigate(['/course/specific']);
   }
-  navigateToStart(){
-    this.router.navigate(['inicio'])
+
+  navigateToStart() {
+    this.router.navigate(['/inicio']);
+  }
+
+  navigateTo(path: string) {
+    this.router.navigate([`/${path.toLowerCase()}`]);
+  }
+
+  toggleAuth() {
+    this.isLogin = !this.isLogin;
+    this.router.navigate([this.isLogin ? '/login' : '/register']);
+  }
+
+  navigateToUser() {
+    this.router.navigate(['/user']);
+  }
+
+  async logout() {
+    try {
+      await this.authService.logout();
+      this.router.navigate(['/login']);
+      console.log('Logged out successfully');
+    } catch (error) {
+      console.error('Error during logout:', error);
+    }
+  }
+
+  ngOnDestroy() {
+    if (this.userSubscription) {
+      this.userSubscription.unsubscribe();
+    }
   }
 }

@@ -4,7 +4,8 @@ import { MenuInicioComponent } from './menu/menu-inicio/menu-inicio.component';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet],
+  standalone: true, // Asegúrate de que esto esté presente
+  imports: [RouterOutlet, MenuInicioComponent], // Agrega MenuInicioComponent aquí
   templateUrl: './app.component.html',
   styleUrl: './app.component.css',
 })
