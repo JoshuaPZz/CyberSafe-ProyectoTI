@@ -122,7 +122,6 @@
             </div>
         </div>
     </section>
-    
     <!-- course-list.component.html -->
     <section class="courses">
     <div class="container">
@@ -137,23 +136,23 @@
         <div class="course-grid">
         <div *ngFor="let course of courses" class="course-card">
             <div class="course-image">
-            <img [src]="course.imageUrl" [alt]="course.title" />
-            <span class="course-level">{{ course.level }}</span>
+            <img [src]="course.url_foto_curso" [alt]="course.nombre" />
+            <!-- No hay "nivel" en los datos actuales -->
             </div>
             <div class="course-content">
-            <h3 class="course-title">{{ course.title }}</h3>
+            <h3 class="course-title">{{ course.nombre }}</h3>
             <div class="course-meta">
                 <div class="course-rating">
                 <i class="fas fa-star"></i>
-                <span>{{ course.rating }}</span>
+                <span>{{ course.calificacion }}</span>
                 </div>
                 <div class="course-students">
                 <i class="fas fa-user"></i>
-                <span>{{ course.students | number }} Estudiantes</span>
+                <span>{{ course.numero_de_estudiantes | number }} Estudiantes</span>
                 </div>
             </div>
             <div class="course-price">
-                <span class="price">{{ course.price }}</span>
+                <span class="price">{{ course.precio | currency:'USD' }}</span>
                 <a href="#" class="btn btn-outline">Ver Más</a>
             </div>
             </div>
@@ -161,8 +160,8 @@
         </div>
     </div>
     </section>
-    
-    <!-- Stats Section -->
+        
+<!-- Stats Section -->
     <section class="stats">
         <div class="container">
             <div class="stats-grid">

@@ -1,3 +1,5 @@
+
+
 export interface Curso {
     nombre: string;
     descripcion: string;
@@ -11,5 +13,6 @@ export interface Curso {
     tipo_de_suscripcion: string;
     url_foto_curso: string;
     listado_lecciones: string[];
-    reviews: null;
+    reviews: string[]; // <-- esto no debe ser null, sino un arreglo
 }
+
