@@ -11,6 +11,8 @@
   </head>
   <body>
     <app-top-bar></app-top-bar>
+    
+    <!-- Breadcrumb -->
     <div class="breadcrumb">
       <div class="container breadcrumb-container">
         <a routerLink="/" class="breadcrumb-item">Homepage</a>
@@ -21,15 +23,17 @@
     <main class="main-content">
       <div class="container content-container">
         <div class="courses-section">
+          <!-- Header Section -->
           <div class="section-header">
             <h1 class="section-title">All Courses</h1>
             <div style="display: flex; align-items: center">
+              <!-- Search Bar -->
               <div class="search-bar">
                 <input
                   type="text"
                   class="search-input"
                   placeholder="Search"
-                  [(ngModel)]="searchTerm"
+                  [(ngModel)]="searchTerm"  
                   (input)="onSearch()"
                 />
                 <button
@@ -40,6 +44,8 @@
                   <i class="fas fa-search"></i>
                 </button>
               </div>
+              
+              <!-- View Options -->
               <div class="view-options">
                 <div
                   class="view-option"
@@ -59,11 +65,13 @@
             </div>
           </div>
 
+          <!-- Loading State -->
           <div *ngIf="loading" class="loading-container">
             <i class="fas fa-spinner fa-spin fa-3x"></i>
             <p>Cargando cursos...</p>
           </div>
 
+          <!-- No Results State -->
           <div
             *ngIf="!loading && filteredCourses && filteredCourses.length === 0"
             class="no-results"
@@ -73,6 +81,7 @@
             <p>Intenta ajustar tus filtros de búsqueda o revisa más tarde.</p>
           </div>
 
+          <!-- Courses Grid/List -->
           <div
             [class.course-grid]="viewMode === 'grid'"
             [class.course-list]="viewMode === 'list'"
@@ -105,12 +114,9 @@
                   </div>
                   <div class="course-students">
                     <i class="far fa-user"></i>
-                    <span
-                      >{{
-                        course.numero_de_estudiantes | number
-                      }}
-                      Estudiantes</span
-                    >
+                    <span>{{
+                      course.numero_de_estudiantes | number
+                    }} Estudiantes</span>
                   </div>
                 </div>
                 <div
@@ -138,8 +144,7 @@
                       {{
                         course.precio === 0
                           ? "Gratis"
-                          : (course.precio
-                            | currency : "USD" : "symbol" : "1.0-0")
+                          : (course.precio | currency : "USD" : "symbol" : "1.0-0")
                       }}
                     </span>
                   </div>
@@ -156,14 +161,55 @@
             </div>
           </div>
 
+          <!-- Pagination for loadCourses (main course loading) -->
+          <div class="pagination" *ngIf="!loading && courses && courses.length > 0">
+            <a
+              href="javascript:void(0);"
+              class="page-item"
+              [class.disabled]="page === 1"
+              (click)="loadCourses(page - 1)"
+            >
+              <i class="fas fa-chevron-left"></i>
+            </a>
+            
+            <a 
+              (click)="loadCourses(1)" 
+              [class.active]="page === 1" 
+              class="page-item"
+              href="javascript:void(0);"
+            >
+              1
+            </a>
+            <a 
+              (click)="loadCourses(2)" 
+              [class.active]="page === 2" 
+              class="page-item"
+              href="javascript:void(0);"
+            >
+              2
+            </a>          
+            
+            <a
+              href="javascript:void(0);"
+              class="page-item"
+              [class.disabled]="page === 3"
+              (click)="loadCourses(page + 1)"
+            >
+              <i class="fas fa-chevron-right"></i>
+            </a>
+          </div>
+
+          <!-- Secondary Pagination (for filtered courses within current page) -->
           <div
-            class="pagination"
+            class="pagination secondary-pagination"
             *ngIf="
               !loading &&
               filteredCourses &&
-              filteredCourses.length > coursesPerPage
+              filteredCourses.length > coursesPerPage &&
+              (searchTerm || selectedInstructors.length > 0 || priceFilter !== 'all' || selectedRatings.length > 0)
             "
           >
+            <small>Filtros aplicados:</small>
             <a
               href="javascript:void(0);"
               class="page-item"
@@ -174,14 +220,14 @@
             </a>
 
             <a
-              *ngFor="let page of getPageNumbers()"
+              *ngFor="let pageNum of getPageNumbers()"
               href="javascript:void(0);"
               class="page-item"
-              [class.active]="page === currentPage"
-              (click)="page !== -1 && goToPage(page)"
+              [class.active]="pageNum === currentPage"
+              (click)="pageNum !== -1 && goToPage(pageNum)"
             >
-              <ng-container *ngIf="page !== -1">{{ page }}</ng-container>
-              <ng-container *ngIf="page === -1">...</ng-container>
+              <ng-container *ngIf="pageNum !== -1">{{ pageNum }}</ng-container>
+              <ng-container *ngIf="pageNum === -1">...</ng-container>
             </a>
 
             <a
@@ -195,7 +241,9 @@
           </div>
         </div>
 
+        <!-- Sidebar with Filters -->
         <div class="sidebar">
+          <!-- Instructors Filter -->
           <div class="sidebar-section">
             <h3 class="sidebar-title">Instructors</h3>
             <div class="filter-list">
@@ -220,6 +268,7 @@
             </div>
           </div>
 
+          <!-- Price Filter -->
           <div class="sidebar-section">
             <h3 class="sidebar-title">Price</h3>
             <div class="filter-list">
@@ -235,7 +284,7 @@
                   />
                   <label for="price-all">All</label>
                 </div>
-                <span class="filter-count">{{ allCoursesCount }}</span>
+                <span class="filter-count">{{ courses.length }}</span>
               </div>
               <div class="filter-item">
                 <div>
@@ -244,8 +293,8 @@
                     id="price-free"
                     name="priceFilter"
                     class="filter-checkbox"
-                    [checked]="priceFilter === 'free'"
-                    (change)="onPriceFilterChange('free')"
+                    [checked]="priceFilter === 'gratis'"
+                    (change)="onPriceFilterChange('gratis')"
                   />
                   <label for="price-free">Free</label>
                 </div>
@@ -258,8 +307,8 @@
                     id="price-paid"
                     name="priceFilter"
                     class="filter-checkbox"
-                    [checked]="priceFilter === 'paid'"
-                    (change)="onPriceFilterChange('paid')"
+                    [checked]="priceFilter === 'Pago único'"
+                    (change)="onPriceFilterChange('Pago único')"
                   />
                   <label for="price-paid">Paid</label>
                 </div>
@@ -268,6 +317,7 @@
             </div>
           </div>
 
+          <!-- Rating Filter -->
           <div class="sidebar-section">
             <h3 class="sidebar-title">Review</h3>
             <div class="filter-list">
@@ -295,6 +345,7 @@
             </div>
           </div>
 
+          <!-- Clear Filters Button -->
           <div class="clear-filters">
             <button class="btn btn-outline" (click)="clearAllFilters()">
               <i class="fas fa-times"></i>
@@ -305,6 +356,7 @@
       </div>
     </main>
 
+    <!-- Footer -->
     <footer class="footer">
       <div class="container">
         <div class="footer-container">
@@ -318,17 +370,21 @@
               propio firewall humano.
             </p>
             <div class="social-links">
-              <a href="#" class="social-link"
-                ><i class="fab fa-facebook-f"></i
-              ></a>
-              <a href="#" class="social-link"
-                ><i class="fab fa-pinterest-p"></i
-              ></a>
-              <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
-              <a href="#" class="social-link"
-                ><i class="fab fa-instagram"></i
-              ></a>
-              <a href="#" class="social-link"><i class="fab fa-youtube"></i></a>
+              <a href="#" class="social-link">
+                <i class="fab fa-facebook-f"></i>
+              </a>
+              <a href="#" class="social-link">
+                <i class="fab fa-pinterest-p"></i>
+              </a>
+              <a href="#" class="social-link">
+                <i class="fab fa-twitter"></i>
+              </a>
+              <a href="#" class="social-link">
+                <i class="fab fa-instagram"></i>
+              </a>
+              <a href="#" class="social-link">
+                <i class="fab fa-youtube"></i>
+              </a>
             </div>
           </div>
 
@@ -361,6 +417,7 @@
       </div>
     </footer>
 
+    <!-- Back to Top Button -->
     <div class="back-to-top" (click)="scrollToTop()">
       <i class="fas fa-arrow-up"></i>
     </div>

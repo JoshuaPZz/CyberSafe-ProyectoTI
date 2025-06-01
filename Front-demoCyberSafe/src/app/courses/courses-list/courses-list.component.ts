@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, RouterModule } from '@angular/router';
+
+import { MenuHeaderComponent } from '../../menu/menu-header/menu-header.component';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { TopBarComponent } from "../../menu/top-bar/top-bar.component";
@@ -14,7 +16,6 @@ import { CursosService } from '../../services/curso/cursos.service';
   styleUrls: ['./courses-list.component.css'],
 })
 export class CoursesListComponent implements OnInit {
-  courses: Curso[] = [];
   filteredCourses: Curso[] = [];
   paginatedCourses: Curso[] = [];
   loading: boolean = true;
@@ -41,25 +42,32 @@ export class CoursesListComponent implements OnInit {
     { stars: 2, count: 0 },
     { stars: 1, count: 0 },
   ];
-  selectedRatings: number[] = [];
 
+  selectedRatings: number[] = [];
+  page = 1;
+  pageSize = 6;
+  courses: Curso[] = []; 
+  
   constructor(private router: Router, private cursosService: CursosService) {}
 
   ngOnInit(): void {
-    this.loading = true;
-    this.cursosService.getCursos().subscribe(
-      (data: Curso[]) => {
-        this.courses = data;
-        this.allCoursesCount = this.courses.length;
-        this.initializeFilters();
-        this.applyFiltersAndPagination();
-        this.loading = false;
-      },
-      (error) => {
-        console.error('Error fetching courses:', error);
-        this.loading = false;
-      }
-    );
+      this.loadCourses(1);
+    }
+
+  loadCourses(currentPage : number) {
+    this.cursosService.getAllCourses().subscribe(allCourses => {
+      const start = (currentPage-1) * this.pageSize;
+      const end = start + this.pageSize;      
+      this.courses = allCourses.slice(start, end);
+      this.page = currentPage;
+      this.initializeFilters();
+      this.applyFiltersAndPagination();
+      this.loading = false;
+    })
+  }
+  navigateToView(event: Event) {
+    event.preventDefault();
+    this.router.navigate(['/courses/view']);
   }
 
   initializeFilters(): void {
