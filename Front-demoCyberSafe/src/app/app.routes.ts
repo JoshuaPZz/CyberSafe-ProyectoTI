@@ -16,7 +16,7 @@ import { RegisterComponent } from './auth/register/register.component';
 export const routes: Routes = [
   { path: 'courses/list', component: CoursesListComponent },//no abren porque tienen firebase
   { path: 'inicio', component: MenuInicioComponent },
-  { path: 'courses/view', component: CourseViewComponent },
+  { path: 'courses/view/:nombre', component: CourseViewComponent },
   { path: 'course/specific', component: IndividualCourseComponent },
   { path: 'course/curriculum', component: IndividualCurriculumComponent },
   { path: 'course/instructor', component: IndividualInstructorComponent },

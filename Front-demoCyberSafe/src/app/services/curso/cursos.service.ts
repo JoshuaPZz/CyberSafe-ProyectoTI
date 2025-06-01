@@ -33,16 +33,24 @@ export class CursosService {
     ); 
   }  
   getCursoByNombre(nombre: string) {
-    const db = getDatabase();
-    const cursosRef = ref(db, 'cursos');
-    return from(get(child(cursosRef, nombre))).pipe(
-      map((snapshot) => {
-        if (snapshot.exists()) {
-          return snapshot.val() as Curso;
+  const db = getDatabase();
+  const cursosRef = ref(db, 'cursos');
+  return from(get(cursosRef)).pipe(
+    map((snapshot) => {
+      if (snapshot.exists()) {
+        const cursos = snapshot.val();
+        const cursoEncontrado = Object.values(cursos).find(
+          (curso: any) => curso.nombre === nombre
+        );
+        if (cursoEncontrado) {
+          return cursoEncontrado as Curso;
         } else {
           throw new Error('Curso no encontrado');
         }
-      })
-    );
-  }
+      } else {
+        throw new Error('No hay cursos disponibles');
+      }
+    })
+  );
+}
 }

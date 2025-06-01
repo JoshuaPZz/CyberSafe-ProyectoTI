@@ -29,7 +29,10 @@ export class CourseViewComponent implements OnInit {
 
   ngOnInit(): void {
     const courseName = this.route.snapshot.paramMap.get('nombre');
+    console.log(courseName);
     if (courseName) {
+
+      
       this.cursosService.getCursoByNombre(courseName).subscribe(
         (data: Curso) => {
           this.curso = data;

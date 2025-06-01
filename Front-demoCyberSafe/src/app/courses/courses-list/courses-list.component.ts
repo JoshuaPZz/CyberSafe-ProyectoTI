@@ -16,6 +16,7 @@ import { CursosService } from '../../services/curso/cursos.service';
   styleUrls: ['./courses-list.component.css'],
 })
 export class CoursesListComponent implements OnInit {
+  allCourses: Curso[] = []; 
   filteredCourses: Curso[] = [];
   paginatedCourses: Curso[] = [];
   loading: boolean = true;
@@ -24,7 +25,7 @@ export class CoursesListComponent implements OnInit {
   viewMode: string = 'grid'; // 'grid' o 'list'
 
   currentPage: number = 1;
-  coursesPerPage: number = 9;
+  coursesPerPage: number = 6;
   totalPages: number = 0;
 
   instructorsList: { id: string; name: string; count: number }[] = [];
@@ -54,17 +55,17 @@ export class CoursesListComponent implements OnInit {
       this.loadCourses(1);
     }
 
-  loadCourses(currentPage : number) {
-    this.cursosService.getAllCourses().subscribe(allCourses => {
-      const start = (currentPage-1) * this.pageSize;
-      const end = start + this.pageSize;      
-      this.courses = allCourses.slice(start, end);
-      this.page = currentPage;
-      this.initializeFilters();
-      this.applyFiltersAndPagination();
-      this.loading = false;
-    })
-  }
+  loadCourses(currentPage: number) {
+  this.cursosService.getAllCourses().subscribe(allCourses => {
+    this.allCourses = allCourses; // 👈 Guarda todos los cursos
+    this.page = currentPage;
+    this.currentPage = currentPage; // 👈 importante
+    this.initializeFilters();
+    this.applyFiltersAndPagination(); // 👈 Aquí se hace el filtrado y paginación
+    this.loading = false;
+  });
+}
+
   navigateToView(event: Event) {
     event.preventDefault();
     this.router.navigate(['/courses/view']);
@@ -104,48 +105,48 @@ export class CoursesListComponent implements OnInit {
     }));
   }
 
-  applyFiltersAndPagination(): void {
-    let tempCourses = this.courses;
+applyFiltersAndPagination(): void {
+  let tempCourses = this.allCourses; // 👈 empieza con todos los cursos
 
-    if (this.searchTerm) {
-      tempCourses = tempCourses.filter(course =>
-        course.nombre.toLowerCase().includes(this.searchTerm.toLowerCase()) ||
-        course.descripcion.toLowerCase().includes(this.searchTerm.toLowerCase()) ||
-        course.nombre_profesor.toLowerCase().includes(this.searchTerm.toLowerCase())
-      );
-    }
-
-    if (this.selectedInstructors.length > 0) {
-      tempCourses = tempCourses.filter(course =>
-        course.nombre_profesor && this.selectedInstructors.includes(course.nombre_profesor)
-      );
-    }
-
-    if (this.priceFilter === 'gratis') {
-      tempCourses = tempCourses.filter(course => course.precio === 0);
-    } else if (this.priceFilter === 'Pago único') {
-      tempCourses = tempCourses.filter(course => course.precio > 0);
-    }
-
-    if (this.selectedRatings.length > 0) {
-      tempCourses = tempCourses.filter(course =>
-        typeof course.calificacion === 'number' && this.selectedRatings.includes(Math.round(course.calificacion))
-      );
-    }
-
-    this.filteredCourses = tempCourses;
-
-    this.totalPages = Math.ceil(this.filteredCourses.length / this.coursesPerPage);
-    if (this.totalPages > 0 && this.currentPage > this.totalPages) {
-      this.currentPage = this.totalPages;
-    } else if (this.totalPages === 0) {
-      this.currentPage = 1;
-    }
-
-    const startIndex = (this.currentPage - 1) * this.coursesPerPage;
-    const endIndex = startIndex + this.coursesPerPage;
-    this.paginatedCourses = this.filteredCourses.slice(startIndex, endIndex);
+  if (this.searchTerm) {
+    tempCourses = tempCourses.filter(course =>
+      course.nombre.toLowerCase().includes(this.searchTerm.toLowerCase()) ||
+      course.descripcion.toLowerCase().includes(this.searchTerm.toLowerCase()) ||
+      course.nombre_profesor.toLowerCase().includes(this.searchTerm.toLowerCase())
+    );
   }
+
+  if (this.selectedInstructors.length > 0) {
+    tempCourses = tempCourses.filter(course =>
+      course.nombre_profesor && this.selectedInstructors.includes(course.nombre_profesor)
+    );
+  }
+
+  if (this.priceFilter === 'gratis') {
+    tempCourses = tempCourses.filter(course => course.precio === 0);
+  } else if (this.priceFilter === 'Pago único') {
+    tempCourses = tempCourses.filter(course => course.precio > 0);
+  }
+
+  if (this.selectedRatings.length > 0) {
+    tempCourses = tempCourses.filter(course =>
+      typeof course.calificacion === 'number' && this.selectedRatings.includes(Math.round(course.calificacion))
+    );
+  }
+
+  this.filteredCourses = tempCourses;
+
+  this.totalPages = Math.ceil(this.filteredCourses.length / this.coursesPerPage);
+  if (this.totalPages > 0 && this.currentPage > this.totalPages) {
+    this.currentPage = this.totalPages;
+  } else if (this.totalPages === 0) {
+    this.currentPage = 1;
+  }
+
+  const startIndex = (this.currentPage - 1) * this.coursesPerPage;
+  const endIndex = startIndex + this.coursesPerPage;
+  this.paginatedCourses = this.filteredCourses.slice(startIndex, endIndex);
+}
 
   onSearch(): void {
     this.currentPage = 1;
@@ -209,7 +210,7 @@ export class CoursesListComponent implements OnInit {
 
   navigateToACourse(courseNombre: string): void {
     console.log(`Navigating to course with name: ${courseNombre}`);
-    this.router.navigate(['/course', courseNombre]);
+    this.router.navigate(['/courses/view', courseNombre]);
   }
 
   onInstructorChange(instructorName: string, event: Event): void {
