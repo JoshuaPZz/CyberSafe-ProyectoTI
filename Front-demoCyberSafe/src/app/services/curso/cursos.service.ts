@@ -9,11 +9,9 @@ import { Database, getDatabase, ref, get, child, query, limitToFirst} from '@ang
 })
 export class CursosService {
 
-  private db: Database = inject(Database);
+  constructor(private db: Database) { }
 
-  constructor() { }
-
-    getCursos() {
+  getCursosPrincipal() {
     const cursosRef = ref(this.db, 'cursos');
     const limitedQuery = query(cursosRef, limitToFirst(6));
     return from(get(limitedQuery)).pipe(
@@ -23,5 +21,16 @@ export class CursosService {
         return Object.values(data) as Curso[];
       })
     );
+  }
+  getAllCourses() {
+    const cursoRef = ref(this.db, 'cursos');
+    return from(get(cursoRef)).pipe(
+      map((snapshot) => {
+        const data = snapshot.val();
+        if (!data) return [];
+        return Object.values(data) as Curso[];
+      })
+    ); 
   }  
+
 }

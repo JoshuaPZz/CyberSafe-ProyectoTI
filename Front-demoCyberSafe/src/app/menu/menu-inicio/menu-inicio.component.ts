@@ -17,7 +17,7 @@ export class MenuInicioComponent {
   constructor(private router: Router, private cursosService : CursosService) {}
 
   ngOnInit(): void {
-    this.cursosService.getCursos().subscribe((data) => {
+    this.cursosService.getCursosPrincipal().subscribe((data) => {
       this.courses = data;
     });
   }

@@ -15,15 +15,24 @@ import { CursosService } from '../../services/curso/cursos.service';
   styleUrl: './courses-list.component.css',
 })
 export class CoursesListComponent {
-  private courses: Curso[] = []; 
+  page = 1;
+  pageSize = 6;
+  courses: Curso[] = []; 
   constructor(private router: Router, private cursosService: CursosService) {}
 
   ngOnInit(): void {
-      this.cursosService.getCursos().subscribe((data) => {
-        this.courses = data;
-      });
+      this.loadCourses(1);
+
     }
 
+  loadCourses(currentPage : number) {
+    this.cursosService.getAllCourses().subscribe(allCourses => {
+      const start = (currentPage-1) * this.pageSize;
+      const end = start + this.pageSize;      
+      this.courses = allCourses.slice(start, end);
+      this.page = currentPage;
+    })
+  }
   navigateToView(event: Event) {
     event.preventDefault();
     this.router.navigate(['/courses/view']);
