@@ -14,19 +14,19 @@ import { LoginComponent } from './auth/login/login.component';
 import { RegisterComponent } from './auth/register/register.component';
 
 export const routes: Routes = [
-  { path: 'courses/list', component: CoursesListComponent },//no abren porque tienen firebase
+  { path: 'courses/list', component: CoursesListComponent }, //no abren porque tienen firebase
   { path: 'inicio', component: MenuInicioComponent },
   { path: 'courses/view/:nombre', component: CourseViewComponent },
   { path: 'course/specific', component: IndividualCourseComponent },
   { path: 'course/curriculum', component: IndividualCurriculumComponent },
   { path: 'course/instructor', component: IndividualInstructorComponent },
   { path: 'course/faqs', component: IndividualFaqsComponent },
-  { path: 'course/reviews', component: IndividualReviewsComponent },
+  { path: 'course/reviews/:nombre', component: IndividualReviewsComponent },
   { path: 'course/payment', component: CoursePaymentComponent },
   { path: 'course/playthrough', component: CoursePlaythroughComponent },
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
-  { path: '', redirectTo: '/inicio', pathMatch: 'full' }
+  { path: '', redirectTo: '/inicio', pathMatch: 'full' },
 ];
 
 @NgModule({

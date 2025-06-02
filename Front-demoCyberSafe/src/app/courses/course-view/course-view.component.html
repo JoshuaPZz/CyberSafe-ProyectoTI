@@ -94,22 +94,31 @@
             </div>
 
             <div class="tab-content">
-              <div *ngIf="activeTab === 'overview'">
-                <p>{{ curso?.descripcion || "Descripción no disponible." }}</p>
+              <div *ngIf="activeTab === 'overview'" class="tab-content">
+                <h2 class="tab-title">Descripcion</h2>
+                <p class="course-description">
+                  {{ curso?.descripcion || "No description available." }}
+                </p>
               </div>
               <div *ngIf="activeTab === 'curriculum'">
                 <p>Contenido del curriculum aquí (pendiente de implementar).</p>
               </div>
               <div *ngIf="activeTab === 'instructor'">
                 <p>
-                  <app-individual-instructor [nombreProfesor]="curso!!.nombre_profesor" ></app-individual-instructor>
+                  <app-individual-instructor
+                    [nombreProfesor]="curso!!.nombre_profesor"
+                  ></app-individual-instructor>
                 </p>
               </div>
               <div *ngIf="activeTab === 'faqs'">
-                <p>Preguntas frecuentes aquí (pendiente de implementar).</p>
+                <p><app-individual-faqs></app-individual-faqs></p>
               </div>
               <div *ngIf="activeTab === 'reviews'">
-                <p>Reseñas del curso aquí (pendiente de implementar).</p>
+                <p>
+                  <app-individual-reviews
+                    [nombre]="curso!!.nombre"
+                  ></app-individual-reviews>
+                </p>
               </div>
             </div>
           </div>

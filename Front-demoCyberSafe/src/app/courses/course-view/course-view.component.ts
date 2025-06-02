@@ -6,13 +6,23 @@ import { Title } from '@angular/platform-browser';
 import { MenuHeaderComponent } from '../../menu/menu-header/menu-header.component';
 import { CursosService } from '../../services/curso/cursos.service';
 import { Curso } from '../../models/courses/curso';
-import { TopBarComponent } from "../../menu/top-bar/top-bar.component";
-import { IndividualInstructorComponent } from "../individual-course/individual-instructor/individual-instructor.component";
+import { TopBarComponent } from '../../menu/top-bar/top-bar.component';
+import { IndividualInstructorComponent } from '../individual-course/individual-instructor/individual-instructor.component';
+import { IndividualReviewsComponent } from '../individual-course/individual-reviews/individual-reviews.component';
+import { IndividualFaqsComponent } from '../individual-course/individual-faqs/individual-faqs.component';
 
 @Component({
   selector: 'app-course-view',
   standalone: true,
-  imports: [CommonModule, FormsModule, MenuHeaderComponent, TopBarComponent, IndividualInstructorComponent],
+  imports: [
+    CommonModule,
+    FormsModule,
+    MenuHeaderComponent,
+    TopBarComponent,
+    IndividualInstructorComponent,
+    IndividualReviewsComponent,
+    IndividualFaqsComponent,
+  ],
   templateUrl: './course-view.component.html',
   styleUrl: './course-view.component.css',
 })
@@ -33,8 +43,6 @@ export class CourseViewComponent implements OnInit {
     const courseName = this.route.snapshot.paramMap.get('nombre');
     console.log(courseName);
     if (courseName) {
-
-      
       this.cursosService.getCursoByNombre(courseName).subscribe(
         (data: Curso) => {
           this.curso = data;
@@ -43,7 +51,8 @@ export class CourseViewComponent implements OnInit {
         },
         (error) => {
           console.error('Error al cargar el curso:', error);
-          this.error = 'No se pudo cargar el curso. Intenta de nuevo más tarde.';
+          this.error =
+            'No se pudo cargar el curso. Intenta de nuevo más tarde.';
           this.titleService.setTitle('Error - CyberSafe');
           this.loading = false;
         }
