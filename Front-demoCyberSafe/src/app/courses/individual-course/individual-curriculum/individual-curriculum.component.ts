@@ -4,7 +4,7 @@ import { TopBarComponent } from "../../../menu/top-bar/top-bar.component";
 
 @Component({
   selector: 'app-individual-curriculum',
-  imports: [CourseViewComponent, TopBarComponent],
+  imports: [],
   templateUrl: './individual-curriculum.component.html',
   styleUrl: './individual-curriculum.component.css'
 })

@@ -11,6 +11,8 @@ import { IndividualInstructorComponent } from '../individual-course/individual-i
 import { IndividualReviewsComponent } from '../individual-course/individual-reviews/individual-reviews.component';
 import { IndividualFaqsComponent } from '../individual-course/individual-faqs/individual-faqs.component';
 import { RouterModule } from '@angular/router';
+import { CoursePaymentComponent } from "../payment/course-payment/course-payment.component";
+import { IndividualCurriculumComponent } from "../individual-course/individual-curriculum/individual-curriculum.component";
 
 @Component({
   selector: 'app-course-view',
@@ -23,8 +25,10 @@ import { RouterModule } from '@angular/router';
     IndividualInstructorComponent,
     IndividualReviewsComponent,
     IndividualFaqsComponent,
-    RouterModule, // <--- Importante para routerLink
-  ],
+    RouterModule,
+    CoursePaymentComponent,
+    IndividualCurriculumComponent
+],
   templateUrl: './course-view.component.html',
   styleUrl: './course-view.component.css',
 })
