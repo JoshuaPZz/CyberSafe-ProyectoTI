@@ -189,7 +189,9 @@
                     : (curso?.precio | currency : "USD" : "symbol" : "1.0-0")
                 }}
               </span>
-              <button class="enroll-button">Inicia Ahora</button>
+              <a class="enroll-button" [routerLink]="['/course/payment']">
+                Inicia Ahora
+              </a>
             </div>
           </div>
         </div>

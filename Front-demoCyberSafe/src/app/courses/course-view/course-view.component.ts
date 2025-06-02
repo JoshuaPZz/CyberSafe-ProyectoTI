@@ -10,6 +10,7 @@ import { TopBarComponent } from '../../menu/top-bar/top-bar.component';
 import { IndividualInstructorComponent } from '../individual-course/individual-instructor/individual-instructor.component';
 import { IndividualReviewsComponent } from '../individual-course/individual-reviews/individual-reviews.component';
 import { IndividualFaqsComponent } from '../individual-course/individual-faqs/individual-faqs.component';
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-course-view',
@@ -22,6 +23,7 @@ import { IndividualFaqsComponent } from '../individual-course/individual-faqs/in
     IndividualInstructorComponent,
     IndividualReviewsComponent,
     IndividualFaqsComponent,
+    RouterModule, // <--- Importante para routerLink
   ],
   templateUrl: './course-view.component.html',
   styleUrl: './course-view.component.css',
@@ -36,7 +38,8 @@ export class CourseViewComponent implements OnInit {
     private route: ActivatedRoute,
     private router: Router,
     private cursosService: CursosService,
-    private titleService: Title
+    private titleService: Title,
+    private routerLink: Router
   ) {}
 
   ngOnInit(): void {
