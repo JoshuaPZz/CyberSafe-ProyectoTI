@@ -12,6 +12,7 @@ import { CoursePaymentComponent } from './courses/payment/course-payment/course-
 import { CoursePlaythroughComponent } from './courses/individual-course/course-playthrough/course-playthrough.component';
 import { LoginComponent } from './auth/login/login.component';
 import { RegisterComponent } from './auth/register/register.component';
+import { PremiumComponent } from './suscripcion/premium/premium.component';
 
 export const routes: Routes = [
   { path: 'courses/list', component: CoursesListComponent }, //no abren porque tienen firebase
@@ -26,6 +27,7 @@ export const routes: Routes = [
   { path: 'course/playthrough', component: CoursePlaythroughComponent },
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
+  { path: 'premium', component: PremiumComponent},
   { path: '', redirectTo: '/inicio', pathMatch: 'full' },
 ];
 

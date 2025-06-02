@@ -1,6 +1,6 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Router, RouterLink } from '@angular/router';
-import { AuthService } from '../../auth/services/auth.service';
+import { AuthService } from '../../services/auth/auth.service';
 import { Subscription } from 'rxjs';
 import { CommonModule } from '@angular/common'; // Importa CommonModule
 
@@ -38,6 +38,10 @@ export class TopBarComponent implements OnInit, OnDestroy {
 
   navigateToStart() {
     this.router.navigate(['/inicio']);
+  }
+
+  navigateToPremium() {
+    this.router.navigate(['/premium']);
   }
 
   navigateTo(path: string) {

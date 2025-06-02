@@ -1,7 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { Instructor } from '../../../models/instructor/instructor';
 import { ActivatedRoute } from '@angular/router';
-import { InstructorService } from '../../../services/instructor.service';
+import { InstructorService } from '../../../services/instructor/instructor.service';
 
 @Component({
   selector: 'app-individual-instructor',

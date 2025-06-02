@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CyberSafe - Home Page</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <app-top-bar></app-top-bar>
+    <div class ="main-container">
+        <div class="subscription-container">
+            <!-- Freemium Plan -->
+            <div class="plan-section freemium-section">
+                <div class="plan-header">
+                    <h2 class="plan-title">Freemium</h2>
+                    <p class="plan-subtitle">Acceso básico gratuito</p>
+                </div>
+                
+                <div class="price-container">
+                    <div class="price">
+                        Gratis
+                    </div>
+                    <div class="price-note">Para siempre</div>
+                </div>
+                
+                <ul class="features-list">
+                    <li class="feature-item">
+                        <span class="feature-icon">✓</span>
+                        Acceso básico a cursos
+                    </li>
+                    <li class="feature-item">
+                        <span class="feature-icon">✓</span>
+                        Funcionalidades limitadas
+                    </li>
+                    <li class="feature-item">
+                        <span class="feature-icon">✓</span>
+                        Tres simulaciones por mes
+                        (PROXIMAMENTE)
+                    </li>
+                </ul>
+                
+                <button class="cta-button freemium-button" (click)="selectFreemiumPlan()">
+                    Comenzar gratis
+                </button>
+            </div>
+
+            <!-- Premium Plan -->
+            <div class="plan-section premium-section">
+                <div class="popular-badge">Más Popular</div>
+                
+                <div class="plan-header">
+                    <h2 class="plan-title">Premium</h2>
+                    <p class="plan-subtitle">Acceso completo ilimitado</p>
+                </div>
+                
+                <div class="price-container">
+                    <div class="price">
+                        $9.99<span class="price-period">/mes</span>
+                    </div>
+                    <div class="price-note">Facturado mensualmente</div>
+                </div>
+                
+                <ul class="features-list">
+                    <li class="feature-item">
+                        <span class="feature-icon">✓</span>
+                        Soporte Prioritario
+                    </li>
+                    <li class="feature-item">
+                        <span class="feature-icon">✓</span>
+                        Acceso a todos los cursos
+                    </li>
+                    <li class="feature-item">
+                        <span class="feature-icon">✓</span>
+                        Simulaciones Ilimitados (PROXIMAMENTE)
+                    </li>
+                </ul>
+                
+                <button class="cta-button premium-button" (click)="selectPremiumPlan()">
+                    Comenzar la prueba gratuita de 7 días
+                </button>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

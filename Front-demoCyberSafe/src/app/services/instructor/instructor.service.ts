@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Instructor } from '../models/instructor/instructor';
+import { Instructor } from '../../models/instructor/instructor';
 import { from, map } from 'rxjs';
 import { Database, getDatabase, ref, get, child, query, limitToFirst} from '@angular/fire/database';
 
