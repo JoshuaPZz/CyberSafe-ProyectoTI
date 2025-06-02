@@ -1,4 +1,4 @@
-<app-menu-header></app-menu-header>
+<app-top-bar></app-top-bar>
 <head>
   <meta charset="utf-8" />
   <meta content="width=device-width, initial-scale=1.0" name="viewport" />
@@ -102,7 +102,7 @@
               </div>
               <div *ngIf="activeTab === 'instructor'">
                 <p>
-                  Información del instructor aquí (pendiente de implementar).
+                  <app-individual-instructor [nombreProfesor]="curso!!.nombre_profesor" ></app-individual-instructor>
                 </p>
               </div>
               <div *ngIf="activeTab === 'faqs'">

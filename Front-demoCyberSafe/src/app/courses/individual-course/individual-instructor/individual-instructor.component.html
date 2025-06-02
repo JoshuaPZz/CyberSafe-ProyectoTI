@@ -7,90 +7,32 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
-
-    <app-top-bar></app-top-bar>
-    <!-- Breadcrumb -->
-    <div class="breadcrumb">
-        <div class="container breadcrumb-container">
-            <a href="#" class="breadcrumb-item">Homepage</a>
-            <a href="#" class="breadcrumb-item">Course</a>
-            <span class="breadcrumb-item">The Ultimate Guide To The BestWordPress LMS Plugin</span>
-        </div>
-    </div>
-    
-    <!-- Course Header -->
-    <section class="course-header">
-        <div class="container course-header-container">
-            <div class="course-info">
-                <div class="course-category">Photography</div>
-                <div class="course-instructor">by Ana López</div>
-                <h1 class="course-title">Defensa Contra Phishing: No Caigas En La Trampa</h1>
-                <div class="course-meta">
-                    <div class="meta-item">
-                        <i class="far fa-clock"></i>
-                        <span>1 Semana</span>
-                    </div>
-                    <div class="meta-item">
-                        <i class="far fa-user"></i>
-                        <span>156 Estudiantes</span>
-                    </div>
-                    <div class="meta-item">
-                        <i class="fas fa-signal"></i>
-                        <span>Todos los niveles</span>
-                    </div>
-                    <div class="meta-item">
-                        <i class="fas fa-book"></i>
-                        <span>20 Clases</span>
-                    </div>
-                    <div class="meta-item">
-                        <i class="fas fa-question-circle"></i>
-                        <span>3 Quizes</span>
-                    </div>
-                </div>
-            </div>
-            <div class="course-image">
-                <img src="./assets/courses-img/phishing-list.png" alt="Phishing Course">
-            </div>
-        </div>
-    </section>
-    
-    <!-- Course Tabs -->
-    <div class="course-tabs">
-        <div class="container tabs-container">
-            <a href="course/specific" class="tab-item">Overview</a>
-            <a href="course/curriculum" class="tab-item">Curriculum</a>
-            <a href="course/instructor" class="tab-item active">Instructor</a>
-            <a href="course/faqs" class="tab-item">FAQs</a>
-            <a href="course/reviews" class="tab-item">Reviews</a>
-        </div>
-    </div>
-    
     <!-- Course Content -->
     <section class="course-content">
         <div class="container content-container">
             <div class="main-content">
                 <div class="profile-card">
                     <div class="profile-image">
+                        <img
+                            [src] = "instructor?.foto"
+                        />
                     </div>
                     
                     <div class="profile-info">
-                        <h1 class="profile-name">Ana López</h1>
-                        <p class="profile-title">Experta en Fraudes Digitales | 10 años en ciberseguridad</p>
+                        <h1 class="profile-name">{{nombreProfesor}}</h1>
+                        <p class="profile-title">{{instructor?.descripcion}}</p>
                         
                         <h3 style="margin-bottom: 10px; color: #555;">Experiencia:</h3>
                         <ul class="experience-list">
-                            <li>Exanalista de seguridad en Google.</li>
-                            <li>Investigadora de campañas de phishing para INTERPOL.</li>
+                            @for (experiencia of instructor?.experiencia; track $index) {
+                                <li>{{ experiencia }}</li>
+                            }
                         </ul>
                         
                         <div class="stats">
                             <div class="stat-item">
                                 <span class="stat-icon"><i class="fas fa-graduation-cap"></i></span>
-                                <span>326 Students</span>
-                            </div>
-                            <div class="stat-item">
-                                <span class="stat-icon"><i class="fas fa-shield-alt"></i></span>
-                                <span>15 en CyberSafe Hub</span>
+                                <span>{{ instructor?.numero_estudiantes }}</span>
                             </div>
                         </div>
                         
@@ -106,96 +48,10 @@
                         </div>
                     </div>
                 </div>
-                <!-- Comment Section -->
-                <div class="comment-section">
-                    <h3 class="section-title">Leave A Comment</h3>
-                    <p class="comment-note">Your email address will not be published. Required fields are marked *</p>
-                    
-                    <form class="comment-form">
-                        <div class="form-row">
-                            <div class="form-group">
-                                <input type="text" class="form-control" placeholder="Name*" required>
-                            </div>
-                            <div class="form-group">
-                                <input type="email" class="form-control" placeholder="Email*" required>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <textarea class="form-control" placeholder="Comment" rows="5"></textarea>
-                        </div>
-                        <div class="form-check">
-                            <input type="checkbox" class="form-check-input" id="saveInfo">
-                            <label for="saveInfo">Save my name, email in this browser for the next time I comment</label>
-                        </div>
-                        <button type="submit" class="submit-button">Post Comment</button>
-                    </form>
-                </div>
+                
             </div>
             
-            <div class="sidebar">
-                <div class="course-price">
-                    <div class="price-header">
-                        <span class="original-price">$20.0</span>
-                        <span class="current-price">$Gratis</span>
-                    </div>
-                    <a href="course/payment" class="enroll-button">Inicia Ahora</a>
-                </div>
-            </div>
         </div>
     </section>
-    
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="container">
-            <div class="footer-container">
-                
-                <div>
-                    <div class="footer-logo">
-                        <img src="./assets/logo_small.png" alt="CyberSafe Logo">
-                    </div>
-                    <p class="footer-about">¿Sabrías identificar un correo falso o bloquear un ataque de ransomware? No dejes tu seguridad al azar: conviértete en tu propio firewall humano.</p>
-                    <div class="social-links">
-                        <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#" class="social-link"><i class="fab fa-pinterest-p"></i></a>
-                        <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
-                        <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
-                        <a href="#" class="social-link"><i class="fab fa-youtube"></i></a>
-                    </div>
-                </div>
-                
-                <div>
-                    <h3 class="footer-section-title">Ayuda</h3>
-                    <ul class="footer-links">
-                        <li><a href="#">Contáctanos</a></li>
-                        <li><a href="#">Blogs</a></li>
-                        <li><a href="#">FAQ</a></li>
-                    </ul>
-                </div>
-                
-                <div>
-                    <h3 class="footer-section-title">Contáctanos</h3>
-                    <div class="footer-contact-item">
-                        <strong>Address:</strong> Calle 182 #42-82
-                    </div>
-                    <div class="footer-contact-item">
-                        <strong>Tel:</strong> +57 3118458554
-                    </div>
-                    <div class="footer-contact-item">
-                        <strong>Mail:</strong> cybersafehub.dg&#64;gmail.com
-                    </div>
-                </div>
-            </div>
-            
-            <div class="footer-bottom">
-                <p>Copyright © 2024 LearnPress LMS | Powered by ThimPress</p>
-            </div>
-        </div>
-    </footer>
-    
-    <!-- Back to Top -->
-    <div class="back-to-top">
-        <i class="fas fa-arrow-up"></i>
-    </div>
-    
 </body>
 </html>

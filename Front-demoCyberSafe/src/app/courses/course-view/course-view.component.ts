@@ -6,11 +6,13 @@ import { Title } from '@angular/platform-browser';
 import { MenuHeaderComponent } from '../../menu/menu-header/menu-header.component';
 import { CursosService } from '../../services/curso/cursos.service';
 import { Curso } from '../../models/courses/curso';
+import { TopBarComponent } from "../../menu/top-bar/top-bar.component";
+import { IndividualInstructorComponent } from "../individual-course/individual-instructor/individual-instructor.component";
 
 @Component({
   selector: 'app-course-view',
   standalone: true,
-  imports: [CommonModule, FormsModule, MenuHeaderComponent],
+  imports: [CommonModule, FormsModule, MenuHeaderComponent, TopBarComponent, IndividualInstructorComponent],
   templateUrl: './course-view.component.html',
   styleUrl: './course-view.component.css',
 })

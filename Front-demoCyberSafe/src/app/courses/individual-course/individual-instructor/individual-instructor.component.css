@@ -571,7 +571,6 @@ textarea.form-control {
 
 .profile-image {
     width: 35%;
-    background-image: url("/assets/valeh.png");
     background-repeat: no-repeat;
     background-size: cover;
     display: flex;
