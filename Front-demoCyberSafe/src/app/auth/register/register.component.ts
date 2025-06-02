@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { AuthService } from '../services/auth.service';
 import { FormsModule } from '@angular/forms'; // Necesario para ngModel
-import { RouterLink } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-register',
@@ -15,12 +15,12 @@ export class RegisterComponent {
   password: string = '';
   errorMessage: string = '';
 
-  constructor(private authService: AuthService) {}
+  constructor(private authService: AuthService, private router: Router) {}
 
   async onRegister() {
     try {
       await this.authService.register(this.email, this.password);
-      alert('¡Registro exitoso!');
+      this.router.navigate(['/inicio']);
     } catch (error: any) {
       this.errorMessage = error.message;
     }
