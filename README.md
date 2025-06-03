@@ -2,7 +2,7 @@
 
 CyberSafe es una plataforma educativa integral desarrollada con Angular, diseñada para el aprendizaje y entrenamiento en ciberseguridad. Ofrece cursos que van desde defensa básica contra phishing hasta pruebas de penetración avanzadas y prácticas de seguridad empresarial.
 
-## 🎯 Características Principales
+## 🎯 Objetivos Principales
 
 - **Plataforma educativa completa** con más de 899 cursos disponibles
 - **Comunidad activa** con más de 25,000 estudiantes
