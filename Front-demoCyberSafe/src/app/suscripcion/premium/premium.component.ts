@@ -15,7 +15,7 @@ export class PremiumComponent {
 
   selectPremiumPlan() {
     this.suscripcionService.suscribirPremium();
-    this.router.navigate(['/inicio'])
+    this.router.navigate(['/course/payment'])
   }
 
   selectFreemiumPlan() {
