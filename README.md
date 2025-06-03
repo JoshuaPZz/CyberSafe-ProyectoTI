@@ -225,17 +225,6 @@ Front-demoCyberSafe/
 4. Push a la rama (`git push origin feature/AmazingFeature`)
 5. Abrir un Pull Request
 
-## 📞 Soporte
-
-Para soporte técnico o preguntas sobre el proyecto:
-
-- **Issues**: [GitHub Issues](https://github.com/JoshuaPZz/CyberSafe-ProyectoTI/issues)
-- **Documentación**: [DeepWiki](https://deepwiki.com/JoshuaPZz/CyberSafe-ProyectoTI)
-
-## 📄 Licencia
-
-Este proyecto está bajo la licencia [MIT](LICENSE) - ver el archivo LICENSE para más detalles.
-
 ## 🙏 Agradecimientos
 
 - Comunidad Angular por las herramientas y documentación
